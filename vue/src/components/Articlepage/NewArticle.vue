@@ -1,4 +1,4 @@
-	<template>
+<template>
   <div id="PersonalCenter">
 	<common-header :title="title"></common-header>
 	<new-article-next></new-article-next>

@@ -8,13 +8,15 @@ import Index          from '@/components/Index'
 
 import WillDie        from '@/components/WaitPage/WillDie'
 import willvue        from '@/components/WaitPage/willvue'
-import willvue2        from '@/components/WaitPage/willvue2'
+import willvue2       from '@/components/WaitPage/willvue2'
 
 import updatapage     from '@/components/updatapage/updatapage'
-import changeHeadimg     from '@/components/updatapage/changeHeadimg'
+import changeHeadimg  from '@/components/updatapage/changeHeadimg'
 
 import NewArticle     from '@/components/Articlepage/NewArticle'
 import ArticleDetails from '@/components/Articlepage/ArticleDetails'
+import Comment        from '@/components/Articlepage/Comment'
+
 import ImprovingPetInformation from '@/components/Cat/ImprovingPetInformation'
 
 import imgup          from '@/components/imgup'
@@ -93,7 +95,11 @@ export default new Router({
       path: '/changeHeadimg',
       name: 'changeHeadimg',
       component:changeHeadimg
+    },
+    {
+      path: '/Comment',
+      name: 'Comment',
+      component:Comment
     }
-    
   ]
 })
