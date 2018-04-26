@@ -33,5 +33,20 @@ class Article extends CI_Controller {
 		$result = $this->Article_model->show_ArticleDetails($aid);
 		echo json_encode($result);
 	}
-	
+	public function commentsend(){
+        $comment=$this->input->post("value");
+        $nowuserid=$this->input->post("nowuserid");
+        $articleid=$this->input->post("articleid");
+        $t=time();
+		$nowtime = date("Y-m-d h:i:sa",$t);
+		$this->load->model('Article_model');
+		$result=$this->Article_model->comment_send($comment,$nowuserid,$articleid,$nowtime);// 参数顺序会影响结果
+		echo json_encode($result);
+	}
+	public function showCommentdata(){
+		$aid = $this->input->post("aid");
+		$this->load->model('Article_model');
+		$result=$this->Article_model->showCommentdata($aid);// 参数顺序会影响结果
+		echo json_encode($result);
+	}
 }

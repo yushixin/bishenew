@@ -24,15 +24,24 @@
               <div class="article-page-center article-page-comment-header_right" @click="reply">回复</div>
           </div>
           <div class="article-page-center article-page-comment-content">
-              <div class="article-page-comment-contentrow">
+              <div class="article-page-comment-contentrow" v-for="(commentdatas,index) in commentdata">
                   <div class="article-page-comment-contentrow-NT"><!-- NT:name&time -->
-                      <div class="article-page-comment-contentrow-t">发布于：2000-00-00</div>
-                      <div class="article-page-comment-contentrow-n">来自：佩奇</div>
+                      <div class="article-page-comment-contentrow-t">发布于：{{commentdatas.c_time}}</div>
+                      <div class="article-page-comment-contentrow-n">来自：{{commentdatas.c_sender}}</div>
                   </div>
-                  <div class="article-page-comment-contentrow-TEXT">哦！老兄！向上帝保证！你超级有趣！趣！趣！趣！趣！趣！趣！趣！趣！趣！趣！
+                  <div class="article-page-comment-contentrow-TEXT">{{commentdatas.c_comment}}
                   </div>
               </div>
           </div>
+      </div>
+      <div class="article-page-center article-page-reply">
+          <div class="article-page-center article-page-reply-input">
+            <input type="text" class="" style="outline:none;">
+          </div>
+          <div class="article-page-center article-page-reply-button">
+            <div class="article-page-center" @click="send">发送</div>
+          </div>
+
       </div>
 
       <div style="height:1rem;"></div><!-- 空div 用来占位 -->
@@ -43,7 +52,6 @@
 
 <script>
   import Axios from "axios";
-  import jQuery from "../../assets/js/jquery-1.12.4.min.js"
   import CommonHeader from '../common/CommonHeader'
   import CommonFooter from '../common/CommonFooter'
 
@@ -52,7 +60,10 @@ export default {
     return {
       title:"文章详情",
       data:[],
-      author:''
+      author:'',
+      nowuserid:'',
+      commentdata:[]
+
     }
   },
   components:{
@@ -62,16 +73,46 @@ export default {
   methods:{
     reply:function(){
       this.youcan_or_yot_youcan_this_is_a_question();
-        this.$router.push({path:"/Comment"});
+      $(".article-page-reply").css("height", "3rem");
+    },
+    send:function(){
+      var value = $(".article-page-reply-input input").val();
+      var articleid=this.$route.params.id;
+      console.log("send函数 nowuserid"+ this.nowuserid);
 
 
+      Axios.get('http://localhost:3000/showInformation',{
+        params:{
+          value:this.nowuserid
+        }
+      }).then((res)=>{
+            var userdata=JSON.parse(res.data);
+            console.log("send函数 userdata"+userdata);
+
+            var articlename = userdata.u_name;
+            console.log("send函数 articlename"+articlename);
+      });
+      Axios.get('http://localhost:3000/commentsend',{ 
+          params:{
+            value:value,
+            nowuserid:this.nowuserid,
+            articleid:articleid
+          }
+        }).then((res)=>{
+          var value = JSON.parse(res.data);
+          console.log("send函数axios返回值："+value);
+          if(value == true){
+              $(".article-page-reply").css("height", "0");
+              // location.reload();
+          }
+        });
     },
     youcan_or_yot_youcan_this_is_a_question:function(){
-      var nowUserid = sessionStorage.getItem("u_id");//在页面加载的时候获取当前有效sessionsStotage
-      var aid=this.$route.params.id;
-      
+      var nowUserid = sessionStorage.getItem("u_id");//在页面加载的时候获取当前有效sessionsStotage      
       if(nowUserid){
-        console.log("当前是用户"+ nowUserid);
+        console.log("youcan_or_yot_youcan_this_is_a_question函数 当前用户id："+ nowUserid);
+        this.nowuserid = nowUserid;
+
       }else if(nowUserid == null){
         this.$router.push({path:"/WillDie"});
       }
@@ -80,24 +121,35 @@ export default {
     
   },
   mounted() {
-    var aid=this.$route.params.id;
-    Axios.get('http://localhost:3000/showArticleData',{
-      params:{
-        aid:aid
-      }
-    }).then((res)=>{
-          this.data = JSON.parse(res.data);
-          console.log(this.data.u_id);
-          var value = this.data.u_id;  
-          Axios.get('http://localhost:3000/showInformation',{
-            params:{
-              value:value
-            }
-          }).then((res)=>{
-                var userdata=JSON.parse(res.data);
-                this.author = userdata.u_name;
-          });
-    });
+      var aid=this.$route.params.id;
+      Axios.get('http://localhost:3000/showArticleData',{
+        params:{
+          aid:aid
+        }
+      }).then((res)=>{
+            this.data = JSON.parse(res.data);
+            console.log(this.data.u_id);
+            var value = this.data.u_id;
+
+            Axios.get('http://localhost:3000/showInformation',{
+              params:{
+                value:value
+              }
+            }).then((res)=>{
+                  var userdata=JSON.parse(res.data);
+                  this.author = userdata.u_name;
+            });
+      });
+      // 下面这个axios用来更新 commentdata
+      Axios.get('http://localhost:3000/showCommentdata',{
+        params:{
+          aid:aid
+        }
+      }).then((res)=>{
+          this.commentdata=JSON.parse(res.data);
+          console.log(this.commentdata);
+
+      });
   }
 }
 </script>
@@ -112,8 +164,9 @@ export default {
     justify-content: center;
     align-items: center;
   }
-  .article-page{
-    
+
+  .hide{
+    height: 0; overflow: hidden;
   }
   .article-page-article{
     width: 100%;
@@ -196,6 +249,8 @@ export default {
   }
   .article-page-comment-content{
     flex: 1;
+    display: flex;
+    flex-direction: column;
   }
   .article-page-comment-contentrow{
     margin-top: 10px;
@@ -244,5 +299,50 @@ export default {
     overflow:hidden;
     white-space:nowrap;
     width:300px;
+  }
+
+  .article-page-reply{
+    position: fixed;
+    bottom: 1.1rem;
+    font-size: 0.4rem;
+
+    height: 0; 
+    overflow: hidden;/*隐藏页面元素的一种方式*/
+
+    width: 100%;
+    background: #CCCCCC;
+    border:1px;
+    border-radius:25px;
+    /*opacity:0.9;*/
+
+    display: flex;
+    flex-direction: column;
+
+    transition: all 0.3s;
+    /*animation: myfirst 0.2s;*/
+  }
+ /* @keyframes myfirst
+  {
+    0%   {height:  0;}
+    25%  {height: 1rem;}
+    50%  {height: 2rem;}
+    100% {height: 3rem;}
+  }*/
+  .article-page-reply-input{
+    width: 70%;
+    flex: 1;
+  }
+  .article-page-reply-input input{
+    width: 100%;
+  }
+  .article-page-reply-button{
+    flex: 1;
+  }
+  .article-page-reply-button div{
+    height: 0.7rem;
+    width: 2rem;
+    border:1px;
+    border-radius:25px;
+    background: #99CCFF;
   }
 </style>

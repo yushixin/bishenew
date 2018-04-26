@@ -27,6 +27,24 @@ class Article_model extends CI_Model {
       	$query = $this->db->get_where('article', $arr);
       	return $query->row();
     }
+    
+    public function comment_send($comment,$nowuserid,$articleid,$nowtime){
+        $arr = array(  
+                    'c_id'          =>  null,
+                    'c_sender'      =>  $nowuserid,
+                    'c_articleid'   =>  $articleid,
+                    'c_time'        =>  $nowtime,
+                    'c_comment'     =>  $comment
+                                                    );
+        $sql = $this->db->insert_string('comment', $arr);
+        $query=$this->db->query($sql);
+        return $query;
+    }
+    public function showCommentdata($aid){
 
+        $sql = "SELECT * FROM comment where c_articleid = ?";
+        $query = $this->db->query($sql,array($aid));
+        return $query->result();
+    }
     
 }
