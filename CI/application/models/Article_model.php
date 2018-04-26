@@ -28,13 +28,15 @@ class Article_model extends CI_Model {
       	return $query->row();
     }
     
-    public function comment_send($comment,$nowuserid,$articleid,$nowtime){
+    public function comment_send($comment,$nowuserid,$articleid,$nowtime,$sendername){
         $arr = array(  
                     'c_id'          =>  null,
                     'c_sender'      =>  $nowuserid,
                     'c_articleid'   =>  $articleid,
                     'c_time'        =>  $nowtime,
-                    'c_comment'     =>  $comment
+                    'c_comment'     =>  $comment,
+                    'c_sendername'  =>  $sendername
+
                                                     );
         $sql = $this->db->insert_string('comment', $arr);
         $query=$this->db->query($sql);

@@ -37,10 +37,11 @@ class Article extends CI_Controller {
         $comment=$this->input->post("value");
         $nowuserid=$this->input->post("nowuserid");
         $articleid=$this->input->post("articleid");
+        $sendername=$this->input->post("sendername");
         $t=time();
 		$nowtime = date("Y-m-d h:i:sa",$t);
 		$this->load->model('Article_model');
-		$result=$this->Article_model->comment_send($comment,$nowuserid,$articleid,$nowtime);// 参数顺序会影响结果
+		$result=$this->Article_model->comment_send($comment,$nowuserid,$articleid,$nowtime,$sendername);// 参数顺序会影响结果
 		echo json_encode($result);
 	}
 	public function showCommentdata(){

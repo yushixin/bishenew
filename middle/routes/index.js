@@ -131,11 +131,13 @@ router.get('/commentsend',function(req,res,next){
     var value = req.query.value;
     var nowuserid = req.query.nowuserid;
     var articleid = req.query.articleid;
+    var sendername = req.query.sendername;
     console.log("########## commentsend Run ##########");
     console.log(value);
     console.log(nowuserid);
     console.log(articleid);
-    request.post({url:'http://127.0.0.1/bishegogogo/CI/article/commentsend',form:{value:value,nowuserid:nowuserid,articleid:articleid}},function(error,response,body){ 
+    console.log(sendername);
+    request.post({url:'http://127.0.0.1/bishegogogo/CI/article/commentsend',form:{value:value,nowuserid:nowuserid,articleid:articleid,sendername:sendername}},function(error,response,body){ 
         if (!error && response.statusCode == 200) {
             console.log("*****返回值");
             console.log(body);

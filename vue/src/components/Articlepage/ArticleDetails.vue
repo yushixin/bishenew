@@ -26,8 +26,8 @@
           <div class="article-page-center article-page-comment-content">
               <div class="article-page-comment-contentrow" v-for="(commentdatas,index) in commentdata">
                   <div class="article-page-comment-contentrow-NT"><!-- NT:name&time -->
-                      <div class="article-page-comment-contentrow-t">发布于：{{commentdatas.c_time}}</div>
-                      <div class="article-page-comment-contentrow-n">来自：{{commentdatas.c_sender}}</div>
+                      <div class="article-page-comment-contentrow-t">{{index+1}}楼 发布于：{{commentdatas.c_time}}</div>
+                      <div class="article-page-comment-contentrow-n">来自：{{commentdatas.c_sendername}}</div>
                   </div>
                   <div class="article-page-comment-contentrow-TEXT">{{commentdatas.c_comment}}
                   </div>
@@ -62,8 +62,8 @@ export default {
       data:[],
       author:'',
       nowuserid:'',
-      commentdata:[]
-
+      commentdata:[],
+      sendername:''
     }
   },
   components:{
@@ -79,33 +79,32 @@ export default {
       var value = $(".article-page-reply-input input").val();
       var articleid=this.$route.params.id;
       console.log("send函数 nowuserid"+ this.nowuserid);
-
-
       Axios.get('http://localhost:3000/showInformation',{
         params:{
           value:this.nowuserid
         }
       }).then((res)=>{
             var userdata=JSON.parse(res.data);
-            console.log("send函数 userdata"+userdata);
-
-            var articlename = userdata.u_name;
-            console.log("send函数 articlename"+articlename);
+            var sendername = userdata.u_name;
+            Axios.get('http://localhost:3000/commentsend',{ 
+                params:{
+                  value:value,
+                  nowuserid:this.nowuserid,
+                  articleid:articleid,
+                  sendername:sendername
+                }
+            }).then((res)=>{
+                var value = JSON.parse(res.data);
+                console.log("send函数axios返回值："+value);
+                if(value == true){
+                    $(".article-page-reply").css("height", "0");
+                    location.reload();
+                }
+            });
       });
-      Axios.get('http://localhost:3000/commentsend',{ 
-          params:{
-            value:value,
-            nowuserid:this.nowuserid,
-            articleid:articleid
-          }
-        }).then((res)=>{
-          var value = JSON.parse(res.data);
-          console.log("send函数axios返回值："+value);
-          if(value == true){
-              $(".article-page-reply").css("height", "0");
-              // location.reload();
-          }
-        });
+
+
+
     },
     youcan_or_yot_youcan_this_is_a_question:function(){
       var nowUserid = sessionStorage.getItem("u_id");//在页面加载的时候获取当前有效sessionsStotage      
