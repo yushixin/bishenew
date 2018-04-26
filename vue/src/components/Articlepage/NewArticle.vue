@@ -1,6 +1,6 @@
 <template>
   <div id="PersonalCenter">
-	<common-header :title="title"></common-header>
+	<common-header></common-header>
 	<new-article-next></new-article-next>
 	<common-footer></common-footer>
   </div>
@@ -19,7 +19,6 @@
 		  	name: 'NewArticle',
 			data () {
 				return {
-					title:'发帖子'
 				}
 			},
 			components:{
@@ -38,6 +37,7 @@
 				}
  			},
 			mounted(){
+				this.$store.dispatch('changeTitle',['发布动态']);
 				this.youcan_or_yot_youcan_this_is_a_question();
 
 			}

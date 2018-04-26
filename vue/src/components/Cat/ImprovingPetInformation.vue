@@ -1,6 +1,6 @@
 <template>
   <div id="ImprovingPetInformation">
-	<common-header :title="title"></common-header>
+	<common-header></common-header>
 		<div class="cat-content">
 			<div class="cat-name">
 				<div>名字</div>
@@ -45,7 +45,6 @@
 		  	name: 'index',
 			data () {
 				return {
-					title: '完善宠物资料'
 				}
 			},
 			components:{
@@ -75,6 +74,7 @@
 
  			},
 			mounted(){
+				 this.$store.dispatch('changeTitle',['完善宠物资料']);
 
 			}
 		}

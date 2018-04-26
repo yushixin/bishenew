@@ -1,7 +1,7 @@
 <template>
   <div id="PersonalCenter">
-	<common-header :title="title"></common-header>
-	<personal-next :username="username"></personal-next>
+	<common-header></common-header>
+	<personal-next></personal-next>
 	<common-footer></common-footer>
   </div>
 </template>
@@ -19,7 +19,6 @@
 			data () {
 				return {
 			  		title: '个人中心',
-			  		username:''
 				}
 			},
 			components:{
@@ -38,6 +37,8 @@
 				}
  			},
 			mounted(){
+				this.$store.dispatch('changeTitle',['个人中心']);
+
 				this.youcan_or_yot_youcan_this_is_a_question();
 				// this.$store.dispatch('changeTitle',['movie']);
 			}

@@ -10,7 +10,7 @@ Vue.use(Vuex)
 
 //定义初始化变量
 const state = {
-  title:'movie'
+  title:'首页'
 }
 
 //定义动作 事件处理方法
@@ -22,7 +22,7 @@ const mutations = {
 
 //对外的事件方法
 const actions = {
-  changeTitle:({commit},status)=>commit('changeTitle',status)
+  changeTitle:({commit},status)=>commit('changeTitle',status),
 }
 
 const getters = {

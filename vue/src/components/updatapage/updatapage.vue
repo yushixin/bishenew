@@ -1,6 +1,6 @@
 <template>
   <div id="PersonalCenter">
-	<common-header :title="title"></common-header>
+	<common-header></common-header>
 	<updata-next></updata-next>
 	<common-footer></common-footer>
   </div>
@@ -8,7 +8,6 @@
 
 <script>
   import Axios from "axios";
-  import jQuery from "../../assets/js/jquery-1.12.4.min.js"
   import CommonHeader from '../common/CommonHeader'
   import CommonFooter from '../common/CommonFooter'
   import UpdataNext from './UpdataNext'
@@ -37,8 +36,8 @@
 				}
  			},
 			mounted(){
+				this.$store.dispatch('changeTitle',['修改资料']);
 				this.youcan_or_yot_youcan_this_is_a_question();
-
 			}
 		}
 </script>

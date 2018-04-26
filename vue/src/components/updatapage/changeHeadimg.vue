@@ -98,6 +98,8 @@
 
  			},
 			mounted(){
+				this.$store.dispatch('changeTitle',['修改头像']);
+
 				this.youcan_or_yot_youcan_this_is_a_question();
 				this.showNowimg();
 				$(".showFileName").html("").hide();

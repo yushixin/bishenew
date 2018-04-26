@@ -1,6 +1,6 @@
 <template>
   <div class="article-page">
-      <common-header :title="title"></common-header>
+      <common-header></common-header>
 
       <div style="height:1rem;"></div><!-- 空div 用来占位 -->
 
@@ -120,6 +120,8 @@ export default {
     
   },
   mounted() {
+      this.$store.dispatch('changeTitle',['文章详情']);
+
       var aid=this.$route.params.id;
       Axios.get('http://localhost:3000/showArticleData',{
         params:{

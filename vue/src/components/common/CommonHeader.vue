@@ -1,6 +1,6 @@
 <template>
 	<div class="header">
-		<h2>{{title}}</h2>
+		<h2>{{$store.state.title}}</h2>
 	</div>
 </template>
 
@@ -11,7 +11,10 @@ export default {
     return {
     }
   },
-  props:['title']
+  // props:['title'],
+  methods : {
+
+  }
 }
 
 </script>

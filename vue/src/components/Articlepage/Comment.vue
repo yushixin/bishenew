@@ -1,6 +1,6 @@
 <template>
   <div class="Comment">
-      <common-header :title="title"></common-header>
+      <common-header></common-header>
       <div style="height:1rem"></div>
       <comment-next></comment-next>
       <common-footer></common-footer>
