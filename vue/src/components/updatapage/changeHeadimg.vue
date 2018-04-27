@@ -1,6 +1,6 @@
 <template>
   <div id="changeHeadimg">
-	<common-header :title="title"></common-header>
+	<common-header></common-header>
 	<div id="changeHeadimg-nextdiv">
 		<div class="flex1 changeHeadimg-imgdiv">
 			<div class="flex3"><div>当前头像</div></div>
@@ -37,7 +37,7 @@
 		  	name: 'updatapage',
 			data () {
 				return {
-					title:'修改头像',
+
 					src:'',
 					uid:''
 				}
@@ -98,7 +98,7 @@
 
  			},
 			mounted(){
-				this.$store.dispatch('changeTitle',['修改头像']);
+				this.$store.dispatch('changeTitle',['修改头像','glyphicon glyphicon-triangle-left']);
 
 				this.youcan_or_yot_youcan_this_is_a_question();
 				this.showNowimg();

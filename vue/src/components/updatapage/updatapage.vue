@@ -36,7 +36,7 @@
 				}
  			},
 			mounted(){
-				this.$store.dispatch('changeTitle',['修改资料']);
+				this.$store.dispatch('changeTitle',['修改资料','glyphicon glyphicon-triangle-left']);
 				this.youcan_or_yot_youcan_this_is_a_question();
 			}
 		}

@@ -120,7 +120,7 @@ export default {
     
   },
   mounted() {
-      this.$store.dispatch('changeTitle',['文章详情']);
+      this.$store.dispatch('changeTitle',['文章详情','glyphicon glyphicon-triangle-left']);
 
       var aid=this.$route.params.id;
       Axios.get('http://localhost:3000/showArticleData',{

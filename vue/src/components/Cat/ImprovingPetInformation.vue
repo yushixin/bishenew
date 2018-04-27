@@ -74,7 +74,7 @@
 
  			},
 			mounted(){
-				 this.$store.dispatch('changeTitle',['完善宠物资料']);
+				 this.$store.dispatch('changeTitle',['完善宠物资料','glyphicon glyphicon-triangle-left']);
 
 			}
 		}

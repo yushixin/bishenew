@@ -1,6 +1,6 @@
 <template>
   <div id="index">
-	<common-header :title="title"></common-header>
+	<common-header></common-header>
 	<index-next></index-next>
 	<common-footer></common-footer>
   </div>
@@ -17,7 +17,6 @@
 		  	name: 'index',
 			data () {
 				return {
-					title: '首页'
 				}
 			},
 			components:{
@@ -26,10 +25,23 @@
     			IndexNext
  			},
  			methods:{
+ 				gameover:function(){
+ 					var a = this.$route.path;
+ 					console.log(a);
+ 					var b = "/index";
+					// console.log(a);
+					if(a == b){
+						console.log("aaa");
+
+					}
+ 				}
 
  			},
 			mounted(){
-				 this.$store.dispatch('changeTitle',['首页']);
+				this.$store.dispatch('changeTitle',['首页','']);
+				// this.gameover;
+
+
 			}
 		}
 </script>
@@ -37,5 +49,7 @@
 
 <style scoped>
   @import "../assets/css/reset.css";
-
+	.displaynone{
+		display: none;
+	}
 </style>

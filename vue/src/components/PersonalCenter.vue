@@ -37,7 +37,7 @@
 				}
  			},
 			mounted(){
-				this.$store.dispatch('changeTitle',['个人中心']);
+				this.$store.dispatch('changeTitle',['个人中心','glyphicon glyphicon-triangle-left']);
 
 				this.youcan_or_yot_youcan_this_is_a_question();
 				// this.$store.dispatch('changeTitle',['movie']);

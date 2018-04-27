@@ -10,13 +10,16 @@ Vue.use(Vuex)
 
 //定义初始化变量
 const state = {
-  title:'首页'
+  title:'首页',
+ 	nav:'首页',
 }
 
 //定义动作 事件处理方法
 const mutations = {
   changeTitle(state,status){
     state.title = status[0];
+    state.nav = status[1];
+
   }
 }
 
