@@ -47,7 +47,6 @@ export default {
     position: absolute;
     top: 1rem;
     width: 100%;
-    background: #b8f1ed;
     text-align: center;
   }
   .container-div{
@@ -94,7 +93,7 @@ export default {
     right: 0.1rem;
     height: 1rem;
     width: 1rem;
-    background: #0099FF;
+    background: #c20c2c;
     border-radius:30px;
 
     display: flex;

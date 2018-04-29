@@ -2,7 +2,6 @@
   <div id="PersonalCenter">
 	<common-header></common-header>
 	<new-article-next></new-article-next>
-	<common-footer></common-footer>
   </div>
 </template>
 
