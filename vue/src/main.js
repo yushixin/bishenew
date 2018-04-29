@@ -9,8 +9,8 @@ import ElementUI 	from 'element-ui';//引入ElementUI
 	
 import $ from 'jquery'
 
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/js/bootstrap.min.js'
+// import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'bootstrap/dist/js/bootstrap.min.js'
 import './assets/css/bootstrap.min.css'
 import './assets/js/bootstrap.min'
 import 'element-ui/lib/theme-chalk/index.css';//引入ElementUI

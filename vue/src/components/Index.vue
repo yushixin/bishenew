@@ -32,7 +32,6 @@
 					// console.log(a);
 					if(a == b){
 						console.log("aaa");
-
 					}
  				}
 
