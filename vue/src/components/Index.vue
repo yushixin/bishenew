@@ -37,7 +37,7 @@
 
  			},
 			mounted(){
-				this.$store.dispatch('changeTitle',['首页','']);
+				this.$store.dispatch('changeTitle',['首页','','#c20c2c']);
 				// this.gameover;
 
 

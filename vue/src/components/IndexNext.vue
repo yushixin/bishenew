@@ -6,6 +6,7 @@
           <div class="text-div"><p>{{datas.a_article}}</p></div>
         </router-link>
       </div>
+      <div class="index-next-release" @click="toNewArticle"><div class="index-next-release-div"><span class="glyphicon glyphicon-edit"></span></div></div>
       <div style="height:1rem"></div>
   </div>
 </template>
@@ -19,6 +20,9 @@ export default {
     }
   },
   methods:{
+    toNewArticle:function(){
+          this.$router.push({path:"/NewArticle"});
+    },
 
   },
   mounted(){
@@ -83,5 +87,30 @@ export default {
     overflow:hidden;
     white-space:nowrap;
     width:300px;
+  }
+  .index-next-release{
+    position: fixed;
+    bottom: 1.1rem;
+    right: 0.1rem;
+    height: 1rem;
+    width: 1rem;
+    background: #0099FF;
+    border-radius:30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .index-next-release-div{
+    width: 0.6rem;
+    height: 0.6rem;
+    color: #fff;
+
+  }
+  .index-next-release-div span{
+    width: 100%;
+    height: 100%;
+    font-size: 0.6rem;
+
   }
 </style>

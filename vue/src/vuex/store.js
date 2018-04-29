@@ -12,6 +12,8 @@ Vue.use(Vuex)
 const state = {
   title:'首页',
  	nav:'首页',
+  color:'#c20c2c',
+
 }
 
 //定义动作 事件处理方法
@@ -19,6 +21,7 @@ const mutations = {
   changeTitle(state,status){
     state.title = status[0];
     state.nav = status[1];
+    state.color = status[2];
 
   }
 }
