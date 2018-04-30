@@ -4,6 +4,8 @@ import reg            from '@/components/reg'
 import PersonalCenter from '@/components/PersonalCenter'
 import login          from '@/components/login'
 import Index          from '@/components/Index'
+import search          from '@/components/search'
+
 // import IndexNext      from '@/components/IndexNext'
 
 import WillDie        from '@/components/WaitPage/WillDie'
@@ -100,6 +102,11 @@ export default new Router({
       path: '/Comment',
       name: 'Comment',
       component:Comment
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: search
     }
   ]
 })

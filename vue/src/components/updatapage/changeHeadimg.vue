@@ -1,28 +1,27 @@
 <template>
   <div id="changeHeadimg">
-	<common-header></common-header>
-	<div id="changeHeadimg-nextdiv">
-		<div class="flex1 changeHeadimg-imgdiv">
-			<div class="flex3"><div>当前头像</div></div>
-			<div class="flex4">
-				<img :src="src" alt="">
-			</div>
-		</div>
-		<div class="flex2 changeHeadimg-formdiv center">
-			<div class="changeHeadimg-formdiv-form">
-				<form name="form1" id="form1">
-					<a href="javascript:;" id="changeHeadimg-inputfile-css">
-						<input type="file" name="photo" id="photo">点击这里上传图片
-					</a>
-					<input type="text" name="uid" :value="uid" readonly="readonly" style="display:none"/>
-				</form>
-			</div>
-			<p class="showFileName center"></p>
-			<p class="showFileName-zhanwei"></p>
-	        <div class="changeHeadimg-formdiv-submitbutton center" @click="changeHeadimgSubmit" >提交</div>
-		</div>
- 	</div>
-	<common-footer></common-footer>
+    <common-header></common-header>
+    <div id="changeHeadimg-nextdiv">
+      <div class="flex1 changeHeadimg-imgdiv">
+        <div class="flex3"><div>当前头像</div></div>
+        <div class="flex4">
+          <img :src="src" alt="">
+        </div>
+      </div>
+      <div class="flex2 changeHeadimg-formdiv center">
+        <div class="changeHeadimg-formdiv-form">
+          <form name="form1" id="form1">
+            <a href="javascript:;" id="changeHeadimg-inputfile-css">
+              <input type="file" name="photo" id="photo">点击这里上传图片
+            </a>
+            <input type="text" name="uid" :value="uid" readonly="readonly" style="display:none"/>
+          </form>
+        </div>
+        <p class="showFileName center"></p>
+        <p class="showFileName-zhanwei"></p>
+            <div class="changeHeadimg-formdiv-submitbutton center" @click="changeHeadimgSubmit" >提交</div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -152,7 +151,7 @@
 		flex-direction: row;
 	}
 	.changeHeadimg-formdiv{
-		flex: 0.4;	
+		flex: 0.4;
 
 		display: flex;
 		flex-direction: column;

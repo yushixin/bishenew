@@ -1,15 +1,13 @@
 <template>
   <div id="PersonalCenter">
-	<common-header></common-header>
+	<common-header2></common-header2>
 	<new-article-next></new-article-next>
   </div>
 </template>
 
 <script>
   import Axios from "axios";
-  import jQuery from "../../assets/js/jquery-1.12.4.min.js"
-  import CommonHeader from '../common/CommonHeader'
-  import CommonFooter from '../common/CommonFooter'
+  import CommonHeader2 from '../common/CommonHeader2'
   import NewArticleNext from './NewArticleNext'
 
 //youcan_or_yot_youcan_this_is_a_question
@@ -21,8 +19,7 @@
 				}
 			},
 			components:{
-    			CommonHeader,
-    			CommonFooter,
+    			CommonHeader2,
     			NewArticleNext
  			},
  			methods:{

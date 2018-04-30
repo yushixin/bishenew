@@ -1,6 +1,6 @@
 <template>
   <div class="article-page">
-      <common-header></common-header>
+      <common-header2></common-header2>
 
       <div style="height:1rem;"></div><!-- 空div 用来占位 -->
 
@@ -46,13 +46,12 @@
 
       <div style="height:1rem;"></div><!-- 空div 用来占位 -->
 
-      <common-footer></common-footer>
   </div>
 </template>
 
 <script>
   import Axios from "axios";
-  import CommonHeader from '../common/CommonHeader'
+  import CommonHeader2 from '../common/CommonHeader2'
   import CommonFooter from '../common/CommonFooter'
 
 export default {
@@ -67,7 +66,7 @@ export default {
     }
   },
   components:{
-          CommonHeader,
+          CommonHeader2,
           CommonFooter
   },
   methods:{
@@ -86,7 +85,7 @@ export default {
       }).then((res)=>{
             var userdata=JSON.parse(res.data);
             var sendername = userdata.u_name;
-            Axios.get('http://localhost:3000/commentsend',{ 
+            Axios.get('http://localhost:3000/commentsend',{
                 params:{
                   value:value,
                   nowuserid:this.nowuserid,
@@ -107,7 +106,7 @@ export default {
 
     },
     youcan_or_yot_youcan_this_is_a_question:function(){
-      var nowUserid = sessionStorage.getItem("u_id");//在页面加载的时候获取当前有效sessionsStotage      
+      var nowUserid = sessionStorage.getItem("u_id");//在页面加载的时候获取当前有效sessionsStotage
       if(nowUserid){
         console.log("youcan_or_yot_youcan_this_is_a_question函数 当前用户id："+ nowUserid);
         this.nowuserid = nowUserid;
@@ -117,7 +116,7 @@ export default {
       }
 
     }
-    
+
   },
   mounted() {
       this.$store.dispatch('changeTitle',['文章详情','glyphicon glyphicon-triangle-left']);
@@ -210,7 +209,7 @@ export default {
     height: 100%;
     flex: 7;
 
-    
+
   }
   .article-page-article-middle_right{
     flex: 1;
@@ -218,7 +217,7 @@ export default {
   .article-page-article-article{
     width: 90%;
     flex: 1;
-    padding: 20px; 
+    padding: 20px;
   }
 
   .article-page-comment{
@@ -259,10 +258,10 @@ export default {
     height: 1rem;
     font-size: 0.3rem;
 
-    background: linear-gradient(to left, #FF3399, #FF3399) left top no-repeat, 
-                linear-gradient(to bottom, #FF3399, #FF3399) left top no-repeat, 
+    background: linear-gradient(to left, #FF3399, #FF3399) left top no-repeat,
+                linear-gradient(to bottom, #FF3399, #FF3399) left top no-repeat,
                 linear-gradient(to left, #FF3399, #FF3399) right top no-repeat,
-                linear-gradient(to bottom, #FF3399, #FF3399) right top no-repeat, 
+                linear-gradient(to bottom, #FF3399, #FF3399) right top no-repeat,
                 linear-gradient(to left, #FF3399, #FF3399) left bottom no-repeat,
                 linear-gradient(to bottom, #FF3399, #FF3399) left bottom no-repeat,
                 linear-gradient(to left, #FF3399, #FF3399) right bottom no-repeat,
@@ -307,7 +306,7 @@ export default {
     bottom: 1.1rem;
     font-size: 0.4rem;
 
-    height: 0; 
+    height: 0;
     overflow: hidden;/*隐藏页面元素的一种方式*/
 
     width: 100%;

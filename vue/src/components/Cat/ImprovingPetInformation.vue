@@ -30,7 +30,6 @@
 			<!-- 用来撑起cat-content -->
 			<div class="aaa"></div>
 		</div>
-	<common-footer></common-footer>
   </div>
 </template>
 
@@ -50,7 +49,7 @@
 			components:{
     			CommonHeader,
     			CommonFooter,
- 
+
  			},
  			methods:{
  				qrclick:function(){

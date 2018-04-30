@@ -38,7 +38,7 @@
  			},
 			mounted(){
 				this.$store.dispatch('changeTitle',['首页','','#c20c2c']);
-				// this.gameover;
+
 
 
 			}
@@ -48,7 +48,5 @@
 
 <style scoped>
   @import "../assets/css/reset.css";
-	.displaynone{
-		display: none;
-	}
+
 </style>

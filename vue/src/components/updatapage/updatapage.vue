@@ -1,8 +1,7 @@
 <template>
   <div id="PersonalCenter">
-	<common-header></common-header>
-	<updata-next></updata-next>
-	<common-footer></common-footer>
+    <common-header></common-header>
+    <updata-next></updata-next>
   </div>
 </template>
 

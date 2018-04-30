@@ -6,7 +6,7 @@
           <div class="text-div"><p>{{datas.a_article}}</p></div>
         </router-link>
       </div>
-      <div class="index-next-release" @click="toNewArticle"><div class="index-next-release-div"><span class="glyphicon glyphicon-edit"></span></div></div>
+      <div class="index-next-release" @click="toNewArticle"><div class="index-next-release-div"><span class="glyphicon glyphicon-ok"></span></div></div>
       <div style="height:1rem"></div>
   </div>
 </template>

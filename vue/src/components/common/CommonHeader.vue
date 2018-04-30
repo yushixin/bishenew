@@ -1,9 +1,29 @@
 <template>
-	<div class="header">
-    <div class="header_left"><div class="article-page-center header_left-div" ><span :class="$store.state.nav"></span></div></div>
-    <div class="header_middle"><h2>{{$store.state.title}}</h2></div>
-    <div class="header_right"></div>
-		<!-- @click="aa" -->
+	<div class="header1-page-center header_1">
+    <div class="header1-page-center header_1_left">
+        <div class="header1-page-center header_1_left-div"><span class="header1-page-center glyphicon glyphicon-align-justify"></span></div>
+    </div>
+
+    <div class="header1-page-center header_1_middle">
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle header_1_middle-button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              全部
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li><a href="#">全部</a></li>
+              <li><a href="#">热门</a></li>
+              <li><a href="#">高分</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="header1-page-center header_1_right">
+      <div class="header_1_right-input"><div class="header_1_right-input-div"><div><input type="text" name="" id=""></div></div></div>
+      <div class="header_1_right-icon" @click="to_SearchPage">
+        <div><span class="glyphicon glyphicon-search"></span></div>
+      </div>
+    </div>
 	</div>
 </template>
 
@@ -18,9 +38,8 @@ export default {
   methods : {
       aa:function(){
           history.go(-1);
-      }
-  },
-  mounted(){
+      },
+      fitstfunction:function(){
         var a = this.$route.path;
         console.log(a);
         var b = "/index";
@@ -34,7 +53,16 @@ export default {
              history.go(-1);
             });
         }
-
+      },
+      showinput:function(){
+        $(".header_1_right-input-div").css("width", "100%");
+      },
+      to_SearchPage:function(){
+        this.$router.push({path:"/search"});
+      }
+  },
+  mounted(){
+        
   }
 }
 
@@ -45,51 +73,115 @@ export default {
 
   @import "../../assets/css/reset.css";	
 
-  .headddder{
+  .zzz{
+    /*不知道这是什么鬼问题*/
 
+  }
+  input{
+    outline: none;
   }
   .displaynone{
     display: none;
   }
-  .article-page-center{
+  .header1-page-center{
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .header{
+  .header_1{
     position: fixed;
     top: 0;
     width: 100%;
-    background:#b8f1cc;
-    color: #f55066;
     height: 1rem;
     z-index:1;
-    display:flex;
+    background: #fff;
+    box-shadow: 0 1px 0 #ccc;
+
+
+    flex-direction: row;
+  }
+
+  .header_1_left{
+
+    width: 1rem;
+    height: 100%;
+  }
+  .header_1_left-div{
+    width: 60%;
+    height: 60%;
+    font-size: 0.4rem;
+  }
+  .header_1_left-div span{
+    width: 100%;
+    height: 100%;
+
+  }
+  .header_1_middle{
+    width: 1.5rem;
+    height: 100%;
+    
+  }
+  .header_1_middle-button{
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .header_1_right{
+    flex:2;
     flex-direction: row;
 
+    width: 100%;
+    height: 100%;
   }
-  .header h2{
+  .header_1_right-input{
     flex: 1;
-    text-align: center;
-    /*text-indent: -1rem;*/
-    line-height: 1rem;
+    height: 100%;
+    padding:10px 0;
   }
-  .header_left{
-    flex: 1;
-    font-size:0.5rem;
+  .header_1_right-input-div{
+    width: 0;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .header_1_right-input-div div{
+    width: 100%;
+    height: 100%;
+    border:1px solid;
+    border-radius: 25px;
+    padding: 7px;
+
+  }
+  .header_1_right-input-div div input{
+    width: 100%;
+    height: 100%;
+    border: 0;
+
+    font-size: 0.3rem;
+  }
+  .header_1_right-icon{
     display: flex;
     align-items: center;
-  }
-  .header_left div {
-    width: 50px;
-    height: 50px;
-  }
+    flex-direction: row-reverse;
+    width: 1rem;
+    height: 100%;
 
-  .header_middle{
-    flex: 2
   }
-  .header_right{
-    flex: 1
+  .header_1_right-icon div{
+    width: 60%;
+    height: 60%;
+    font-size: 0.4rem;
   }
-
+  .header_1_right-icon span{
+    width: 100%;
+    height: 100%;
+  }
+  .dropdown-menu{
+    top: 135%;
+  }
+  .btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover {
+    color: #333;
+    background-color: #fff;
+    border-color: #8c8c8c;
+}
 </style>

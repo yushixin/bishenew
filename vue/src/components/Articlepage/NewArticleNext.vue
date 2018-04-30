@@ -49,13 +49,9 @@ export default {
   .NewArticleNext{
     position: fixed;
     top: 1rem;
-
     width: 100%;
-    height: 549px;
-
+    height: 100%;
     font-size: 0.4rem;
-
-    background: #b8f1ed;
   }
   .NewArticleNext div{
   	width: 100%;

@@ -1,47 +1,35 @@
 <template>
   <div class="footer">
-    <ul class="commonfooter">
-      <li><router-link to="/index">
+      <ul class="commonfooter">
 
-          <div class="commonfooter-page-center commonfooter-style commonfooter-index xuanzhongcolor">
-            <div class="commonfooter-page-center commonfooter-style-next">
+          <li><router-link to="/index">
+              <div class="commonfooter-page-center commonfooter-style commonfooter-index xuanzhongcolor">
+                <div class="commonfooter-page-center commonfooter-style-next">
+                    <div class="commonfooter-page-center commonfooter-style-next-icon"><div class="commonfooter-page-center"><span class="glyphicon glyphicon-home"></span></div></div>
+                    <div class="commonfooter-page-center commonfooter-style-next-word"><div><p>首页</p></div></div>
+                </div>
+              </div>
+          </router-link></li>
 
-                <div class="commonfooter-page-center commonfooter-style-next-icon"><div class="commonfooter-page-center"><span class="glyphicon glyphicon-home"></span></div></div>
-                <div class="commonfooter-page-center commonfooter-style-next-word"><div><p>首页</p></div></div>
+          <li><router-link to="/">
+              <div class="commonfooter-page-center commonfooter-style commonfooter-mall">
+                <div class="commonfooter-page-center commonfooter-style-next">
+                    <div class="commonfooter-page-center commonfooter-style-next-icon"><div class="commonfooter-page-center"><span class="glyphicon glyphicon-folder-close"></span></div></div>
+                    <div class="commonfooter-page-center commonfooter-style-next-word"><div><p>商城</p></div></div>
+                </div>
+              </div>
+          </router-link></li>
 
-            </div>
-          </div>
+          <li><router-link to="/PersonalCenter">
+              <div class="commonfooter-page-center commonfooter-style commonfooter-me">
+                <div class="commonfooter-page-center commonfooter-style-next">
+                    <div class="commonfooter-page-center commonfooter-style-next-icon"><div class="commonfooter-page-center"><span class="glyphicon glyphicon-user"></span></div></div>
+                    <div class="commonfooter-page-center commonfooter-style-next-word"><div><p>我</p></div></div>
+                </div>
+              </div>
+          </router-link></li>
 
-      </router-link></li>
-
-      <li><router-link to="/NewArticle">
-
-          <div class="commonfooter-page-center commonfooter-style commonfooter-mall">
-            <div class="commonfooter-page-center commonfooter-style-next">
-
-                <div class="commonfooter-page-center commonfooter-style-next-icon"><div class="commonfooter-page-center"><span class="glyphicon glyphicon-folder-close"></span></div></div>
-                <div class="commonfooter-page-center commonfooter-style-next-word"><div><p>商城</p></div></div>
-
-            </div>
-          </div>
-
-      </router-link></li>
-
-      <li><router-link to="/PersonalCenter">
-
-          <div class="commonfooter-page-center commonfooter-style commonfooter-me">
-            <div class="commonfooter-page-center commonfooter-style-next">
-
-                <div class="commonfooter-page-center commonfooter-style-next-icon"><div class="commonfooter-page-center"><span class="glyphicon glyphicon-user"></span></div></div>
-                <div class="commonfooter-page-center commonfooter-style-next-word"><div><p>我</p></div></div>
-
-            </div>
-          </div>
-
-      </router-link></li>
-    </ul>
-    <!-- <input class="colorinput"type="text" :value="$store.state.color" style="display:none;"> -->
-
+      </ul>
   </div>
 </template>
 
@@ -92,6 +80,7 @@ export default {
     bottom:0;
     width: 100%;
     background: #fff;
+    box-shadow: 0 -1px 0 #ccc;
   }
   .commonfooter{
     display: flex;
