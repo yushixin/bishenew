@@ -1,7 +1,7 @@
 <template>
   <div id="index">
 	<common-header></common-header>
-	<index-next></index-next>
+    <router-view></router-view>
 	<common-footer></common-footer>
   </div>
 </template>

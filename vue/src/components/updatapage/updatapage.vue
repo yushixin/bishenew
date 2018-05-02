@@ -1,13 +1,13 @@
 <template>
   <div id="PersonalCenter">
-    <common-header></common-header>
+    <common-header2></common-header2>
     <updata-next></updata-next>
   </div>
 </template>
 
 <script>
   import Axios from "axios";
-  import CommonHeader from '../common/CommonHeader'
+  import CommonHeader2 from '../common/CommonHeader2'
   import CommonFooter from '../common/CommonFooter'
   import UpdataNext from './UpdataNext'
 
@@ -21,7 +21,7 @@
 				}
 			},
 			components:{
-    			CommonHeader,
+    			CommonHeader2,
     			CommonFooter,
     			UpdataNext
  			},

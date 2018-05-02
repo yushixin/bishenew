@@ -1,6 +1,6 @@
 <template>
   <div id="PersonalCenter">
-	<common-header></common-header>
+	<common-header2></common-header2>
 	<personal-next></personal-next>
 	<common-footer></common-footer>
   </div>
@@ -8,7 +8,7 @@
 
 <script>
   import Axios from "axios";
-  import CommonHeader from './common/CommonHeader'
+  import CommonHeader2 from './common/CommonHeader2'
   import CommonFooter from './common/CommonFooter'
   import PersonalNext from './PersonalNext'
 
@@ -22,7 +22,7 @@
 				}
 			},
 			components:{
-    			CommonHeader,
+    			CommonHeader2,
     			CommonFooter,
     			PersonalNext
  			},

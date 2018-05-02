@@ -1,6 +1,6 @@
 <template>
   <div id="changeHeadimg">
-    <common-header></common-header>
+    <common-header2></common-header2>
     <div id="changeHeadimg-nextdiv">
       <div class="flex1 changeHeadimg-imgdiv">
         <div class="flex3"><div>当前头像</div></div>
@@ -27,7 +27,7 @@
 
 <script>
   import Axios from "axios";
-  import CommonHeader from '../common/CommonHeader'
+  import CommonHeader2 from '../common/CommonHeader2'
   import CommonFooter from '../common/CommonFooter'
 
 //youcan_or_yot_youcan_this_is_a_question
@@ -42,7 +42,7 @@
 				}
 			},
 			components:{
-    			CommonHeader,
+    			CommonHeader2,
     			CommonFooter,
  			},
  			methods:{

@@ -1,6 +1,6 @@
 <template>
   <div id="ImprovingPetInformation">
-	<common-header></common-header>
+	<common-header2></common-header2>
 		<div class="cat-content">
 			<div class="cat-name">
 				<div>名字</div>
@@ -35,7 +35,7 @@
 
 <script>
   import Axios from "axios";
-  import CommonHeader from '../common/CommonHeader'
+  import CommonHeader2 from '../common/CommonHeader2'
   import CommonFooter from '../common/CommonFooter'
   // import IndexNext from './IndexNext'
 
@@ -47,7 +47,7 @@
 				}
 			},
 			components:{
-    			CommonHeader,
+    			CommonHeader2,
     			CommonFooter,
 
  			},

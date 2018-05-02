@@ -1,7 +1,7 @@
 <template>
 	<div class="header">
-    <div class="header_left"><div class="article-page-center header_left-div" ><span :class="$store.state.nav"></span></div></div>
-    <div class="header_middle"><h2>{{$store.state.title}}header2</h2></div>
+    <div class="header_left"><div class="article-page-center header_left-div" ><span class="glyphicon glyphicon-menu-left"></span></div></div>
+    <div class="header_middle"><h2>{{$store.state.title}}</h2></div>
     <div class="header_right"></div>
 		<!-- @click="aa" -->
 	</div>
@@ -60,12 +60,13 @@ export default {
     position: fixed;
     top: 0;
     width: 100%;
-    background:#b8f1cc;
-    color: #f55066;
+    background: #fff;
+    color: #000;
     height: 1rem;
     z-index:1;
     display:flex;
     flex-direction: row;
+    box-shadow: 0 1px 0 #ccc;
 
   }
   .header h2{

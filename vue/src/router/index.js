@@ -3,8 +3,11 @@ import Router         from 'vue-router'
 import reg            from '@/components/reg'
 import PersonalCenter from '@/components/PersonalCenter'
 import login          from '@/components/login'
-import Index          from '@/components/Index'
-import search          from '@/components/search'
+import index          from '@/components/Index'
+import indexall       from '@/components/index/indexall'
+import indextop       from '@/components/index/indextop'
+
+import search         from '@/components/search'
 
 // import IndexNext      from '@/components/IndexNext'
 
@@ -30,23 +33,40 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-  	{
-  		path: '/',
-  		redirect: '/index'
-  	},
-  	{
-  		path: '/index',
-  		component: Index
-  	},
+    // {
+    //   path: '/',
+    //   redirect: '/index'
+    // },
+    // {
+    //   path: '/index',
+    //   component: index
+    // },
     {
-     	path: '/reg',
-     	name: 'reg',
-     	component: reg
+      path:'/index',
+      redirect:'/index/indexall'
     },
     {
-    	path: '/login',
-    	name: 'login',
-    	component: login
+      path: '/index',
+      component: index,
+      children: [
+        { path: "/index/indexall", component: indexall },
+        { path: "/index/indextop", component: indextop }
+
+      ]
+    },
+    {
+      path: '/',
+      redirect:'/index/indexall'
+    },
+    {
+      path: '/reg',
+      name: 'reg',
+      component: reg
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: login
     },
     {
       path: '/PersonalCenter',
