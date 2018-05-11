@@ -19,10 +19,10 @@
             <div style="height:150px"></div><!-- 空div 用来撑起PersonalData -->
         </div>
         <div class="cat-data">
-            <div class="no-cat">
+            <div class="no-cat" v-if="this.catdata.length <= 0">
               您还没有完善宠物信息<div class="now-add" @click="toIPetI">立即添加</div>
             </div>
-            <div class="have-cat">
+            <div class="have-cat" v-if="this.catdata.length > 0">
               哇！！你居然有猫！！！<div class="now-add" @click="toIPetI">立即添加</div>
             </div>
         </div>
@@ -115,15 +115,7 @@ export default {
             value:value
           }
         }).then((res)=>{
-            var catdata = JSON.parse(res.data);
-            if(catdata.length > 0){
-              $(".no-cat").addClass("displaynone");
-              $(".have-cat").removeClass("displaynone");
-              this.catdata = catdata;
-            }else if(catdata.length == 0){
-              $(".no-cat").removeClass("displaynone");
-              $(".have-cat").addClass("displaynone");
-            }
+            this.catdata = JSON.parse(res.data);
         });
     }
 }
