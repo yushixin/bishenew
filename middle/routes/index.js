@@ -89,6 +89,15 @@ router.get('/showcontainer',function(req,res,next){
     request.get('http://127.0.0.1/bishegogogo/CI/article/showcontainer',function(error, response, body){
         if (!error && response.statusCode == 200) {
             res.json(body);
+            console.log(body);
+        }
+    });
+})
+router.get('/showcontainertop',function(req,res,next){
+    request.get('http://127.0.0.1/bishegogogo/CI/article/showcontainertop',function(error, response, body){
+        if (!error && response.statusCode == 200) {
+            res.json(body);
+            console.log(body);
         }
     });
 })
@@ -153,11 +162,23 @@ router.get('/showCommentdata',function(req,res,next){
 
     request.post({url:'http://127.0.0.1/bishegogogo/CI/article/showCommentdata',form:{aid:aid}},function(error,response,body){ 
         if (!error && response.statusCode == 200) {
-            console.log("*****返回值");
-            console.log(body);
             res.json(body);
         }
     });
 })
+router.get('/hotadd1',function(req,res,next){
+    console.log("########## hotadd1 Run ##########");
+    var aid = req.query.aid;
+
+    request.post({url:'http://127.0.0.1/bishegogogo/CI/article/hotadd1',form:{aid:aid}},function(error,response,body){ 
+        if (!error && response.statusCode == 200) {
+            console.log("*****hotadd1 返回值");
+            res.json(body);
+            console.log(body);
+
+        }
+    });
+})
+
 
 module.exports = router;

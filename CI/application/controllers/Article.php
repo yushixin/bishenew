@@ -28,6 +28,11 @@ class Article extends CI_Controller {
 		$this->load->model('Article_model');
 		$result = $this->Article_model->show_container();
 		echo json_encode($result);
+	}	
+	public function showcontainertop(){
+		$this->load->model('Article_model');
+		$result = $this->Article_model->show_containertop();
+		echo json_encode($result);
 	}
 	public function showArticleData(){
 		$aid = $this->input->get("aid");
@@ -50,6 +55,12 @@ class Article extends CI_Controller {
 		$aid = $this->input->post("aid");
 		$this->load->model('Article_model');
 		$result=$this->Article_model->showCommentdata($aid);// 参数顺序会影响结果
+		echo json_encode($result);
+	}
+	public function hotadd1(){
+        $aid=$this->input->post("aid");
+		$this->load->model('Article_model');
+		$result=$this->Article_model->hot_add1($aid);
 		echo json_encode($result);
 	}
 }

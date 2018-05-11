@@ -8,11 +8,11 @@
           <div class="article-page-center article-page-article-title"><b>{{data.a_title}}</b></div>
           <div class="article-page-article-middle">
               <div class="article-page-article-middle_left">
-                <div class="article-page-article-middle_left-author">作者: {{author}}</div>
+                <div class="article-page-article-middle_left-author">作者: {{data.u_name}}</div>
                 <div class="article-page-article-middle_left-time">{{data.a_time}}</div>
               </div>
               <div class="article-page-article-middle_right">
-                aaaa
+                {{data.a_hot}}
               </div>
           </div>
           <div class="article-page-article-article"><p>{{data.a_article}}</p></div>
@@ -59,10 +59,9 @@ export default {
     return {
       title:"文章详情",
       data:[],
-      author:'',
       nowuserid:'',
       commentdata:[],
-      sendername:''
+      sendername:'',
     }
   },
   components:{
@@ -122,24 +121,25 @@ export default {
       this.$store.dispatch('changeTitle',['文章详情','glyphicon glyphicon-triangle-left']);
 
       var aid=this.$route.params.id;
+
+      Axios.get('http://localhost:3000/hotadd1',{
+        params:{
+          aid:aid
+        }
+      }).then((res)=>{
+            var val = JSON.parse(res.data);
+            console.log(val);
+      });
+
       Axios.get('http://localhost:3000/showArticleData',{
         params:{
           aid:aid
         }
       }).then((res)=>{
             this.data = JSON.parse(res.data);
-            console.log(this.data.u_id);
-            var value = this.data.u_id;
-
-            Axios.get('http://localhost:3000/showInformation',{
-              params:{
-                value:value
-              }
-            }).then((res)=>{
-                  var userdata=JSON.parse(res.data);
-                  this.author = userdata.u_name;
-            });
       });
+
+
       // 下面这个axios用来更新 commentdata
       Axios.get('http://localhost:3000/showCommentdata',{
         params:{
@@ -147,8 +147,6 @@ export default {
         }
       }).then((res)=>{
           this.commentdata=JSON.parse(res.data);
-          console.log(this.commentdata);
-
       });
   }
 }

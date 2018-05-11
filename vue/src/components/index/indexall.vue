@@ -1,11 +1,5 @@
 <template>
   <div class="index-center IndexNext">
-<!--       <div class="container-div" v-for="datas in data">
-        <router-link :to="'/ArticleDetails/'+datas.a_id">
-          <div class="title-div"><div>标题：</div><h3>{{datas.a_title}}</h3></div>
-          <div class="text-div"><p>{{datas.a_article}}</p></div>
-        </router-link>
-      </div> -->
 
       <div class="index-center index-article-list" v-for="datas in data">
         <router-link :to="'/ArticleDetails/'+datas.a_id">
@@ -39,7 +33,6 @@ export default {
     toNewArticle:function(){
           this.$router.push({path:"/NewArticle"});
     },
-
   },
   mounted(){
     Axios.get('http://localhost:3000/showcontainer')
@@ -83,11 +76,9 @@ export default {
     width: 100%;
     padding-left: 0.25rem;
     padding-right: 0.25rem;
-
     color: #222; font-size: 0.5rem;
     display: flex;
     align-items: center;
-
   }
   .index-article-list-tittle p{
     text-overflow:ellipsis;
@@ -101,10 +92,8 @@ export default {
     padding-left: 0.25rem;
     padding-right: 0.25rem;
     color: #757575; font-size: 0.3rem;
-
     display: flex;
     align-items: center;
-
   }
   .index-article-list-content p{
     text-overflow:ellipsis;
@@ -118,18 +107,13 @@ export default {
     padding-left: 0.25rem;
     padding-right: 0.25rem;
     color: #757575; font-size: 0.2rem;
-
     flex-direction: row;
-
   }
   .index-article-list-bottom_left{
     flex: 1;
-
-
   }
   .index-article-list-bottom_middle{
     flex: 2;
-
     
   }
   .index-article-list-bottom_right{
@@ -139,43 +123,6 @@ export default {
     flex: 1;
     
   }
- /* .container-div{
-    width: 90%;
-    height: 2rem;
-    background: #f1ccb8;
-    border: 3px solid block;
-    margin:20px auto;
-    clear: both;
-  }
-  .title-div{
-    width: 100%;
-    height: 1rem;
-    font-size: 0.4rem;
-    line-height: 1rem;
-    border-bottom-style: solid;
-    border-width: 3px;
-    border-color: block; 
-    text-align: center;
-    margin: 0 auto;
-  }
-  .title-div h3{
-    float: left;
-    font-size: 0.4rem;
-  }
-  .title-div div{
-    float: left;
-  }
-  .text-div{
-    width: 100%;
-    height: 1rem;
-    font-size: 0.5rem;
-  }
-  .text-div p{
-    text-overflow:ellipsis;
-    overflow:hidden;
-    white-space:nowrap;
-    width:300px;
-  }*/
   .index-next-release{
     position: fixed;
     bottom: 1.1rem;
@@ -184,7 +131,6 @@ export default {
     width: 1rem;
     background: #c20c2c;
     border-radius:30px;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -193,12 +139,10 @@ export default {
     width: 0.6rem;
     height: 0.6rem;
     color: #fff;
-
   }
   .index-next-release-div span{
     width: 100%;
     height: 100%;
     font-size: 0.6rem;
-
   }
 </style>

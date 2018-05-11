@@ -16,10 +16,15 @@ class Article_model extends CI_Model {
 	 	 return $query->num_row();
     }
     public function show_container(){
-    	$sql = "SELECT * FROM article order by a_id desc";
+        $sql = "SELECT * FROM article order by a_id desc";
+    	// $sql = "SELECT * FROM article";
 		$query=$this->db->query($sql);
 		return $query->result();
-
+    }
+    public function show_containertop(){
+        $sql = "SELECT * FROM article order by a_hot desc";
+        $query=$this->db->query($sql);
+        return $query->result();
     }
     public function show_ArticleDetails($aid){
     	$arr = array(
@@ -49,5 +54,10 @@ class Article_model extends CI_Model {
         $query = $this->db->query($sql,array($aid));
         return $query->result();
     }
-    
+    public function hot_add1($aid){
+
+        $sql = "UPDATE article SET a_hot = a_hot + 1 WHERE a_id = ?";
+        $query = $this->db->query($sql,array($aid));
+        return $query->num_row();
+    }
 }

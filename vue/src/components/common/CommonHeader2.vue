@@ -25,11 +25,11 @@ export default {
         console.log(a);
         var b = "/index";
         if(a == b){
-            console.log("aaa");
+            console.log("当前在首页");
             $(".header_left-div").click(function(){
             });
         }else{
-          console.log("bbb");
+          console.log("当前不在首页");
           $(".header_left-div").click(function(){
              history.go(-1);
             });
