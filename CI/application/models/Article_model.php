@@ -9,11 +9,13 @@ class Article_model extends CI_Model {
 					'a_article' =>  $articletext,
                     'u_name' =>  $uname,
                     'u_id'      =>  $uid,
-                    'a_time'    =>  $nowtime
+                    'a_time'    =>  $nowtime,
+                    'a_hot'    =>  1,
+
                                                     );
 	  	$sql = $this->db->insert_string('article', $arr);
 	  	$query=$this->db->query($sql);
-	 	 return $query->num_row();
+	 	 return $query;
     }
     public function show_container(){
         $sql = "SELECT * FROM article order by a_id desc";
@@ -59,5 +61,14 @@ class Article_model extends CI_Model {
         $sql = "UPDATE article SET a_hot = a_hot + 1 WHERE a_id = ?";
         $query = $this->db->query($sql,array($aid));
         return $query->num_row();
+    }
+    public function index_search($searchvalue){
+
+        // $sql = " SELECT * FROM article WHERE a_title LIKE '% ".$searchvalue." %' OR a_article LIKE '% ".$searchvalue."%'";
+        $sql = "select * from article  where a_title like '%".$searchvalue."%'  or a_article like '%".$searchvalue."%' ";
+
+
+        $query = $this->db->query($sql);
+        return $query->result();
     }
 }

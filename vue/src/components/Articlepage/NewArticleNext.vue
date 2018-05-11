@@ -32,9 +32,16 @@ export default {
   				uid:uid
   			}
   		}).then((res)=>{
+        var data = JSON.parse(res.data);
+        console.log(data);
+        if(data == true){
+          this.$router.push({path:"/index"});
+        }else{
+          console.log("奥 发生错误了老伙计");
+        }
+
 
   		});
-      this.$router.push({path:"/index"});
 
   	}
       

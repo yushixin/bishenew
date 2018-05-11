@@ -1,6 +1,6 @@
 <template>
 	<div class="header">
-    <div class="header_left"><div class="article-page-center header_left-div" ><span class="glyphicon glyphicon-menu-left"></span></div></div>
+    <div class="header_left"><div class="article-page-center header_left-div" @click="aa"><span class="glyphicon glyphicon-menu-left"></span></div></div>
     <div class="header_middle"><h2>{{$store.state.title}}</h2></div>
     <div class="header_right"></div>
 		<!-- @click="aa" -->
@@ -21,19 +21,19 @@ export default {
       }
   },
   mounted(){
-        var a = this.$route.path;
-        console.log(a);
-        var b = "/index";
-        if(a == b){
-            console.log("当前在首页");
-            $(".header_left-div").click(function(){
-            });
-        }else{
-          console.log("当前不在首页");
-          $(".header_left-div").click(function(){
-             history.go(-1);
-            });
-        }
+        // var a = this.$route.path;
+        // console.log(a);
+        // var b = "/index";
+        // if(a == b){
+        //     console.log("当前在首页");
+        //     $(".header_left-div").click(function(){
+        //     });
+        // }else{
+        //   console.log("当前不在首页");
+        //   $(".header_left-div").click(function(){
+        //      history.go(-1);
+        //   });
+        // }
 
   }
 }

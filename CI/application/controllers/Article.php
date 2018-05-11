@@ -22,7 +22,7 @@ class Article extends CI_Controller {
 		$nowtime = date("Y-m-d h:i:sa",$t);
 		$this->load->model('Article_model');
 		$result=$this->Article_model->send_out($articletitle,$articletext,$uname,$uid,$nowtime);// 参数顺序会影响结果
-		echo $result;
+		echo json_encode($result);
 	}
 	public function showcontainer(){
 		$this->load->model('Article_model');
@@ -61,6 +61,12 @@ class Article extends CI_Controller {
         $aid=$this->input->post("aid");
 		$this->load->model('Article_model');
 		$result=$this->Article_model->hot_add1($aid);
+		echo json_encode($result);
+	}
+	public function indexsearch(){
+		$searchvalue=$this->input->post("searchvalue");
+		$this->load->model('Article_model');
+		$result=$this->Article_model->index_search($searchvalue);
 		echo json_encode($result);
 	}
 }

@@ -74,6 +74,8 @@ router.get('/changeInformation',function(req,res,next){
 })
 
 router.get('/sendout',function(req,res,next){
+    console.log("########## sendout Run ##########");
+
     var articletitle = req.query.articletitle;
     var articletext = req.query.articletext;
     var uname = req.query.uname;
@@ -81,6 +83,10 @@ router.get('/sendout',function(req,res,next){
     request.post({url:'http://127.0.0.1/bishegogogo/CI/article/sendOut',form:{articletitle:articletitle,articletext:articletext,uname:uname,uid:uid}},function(error,response,body){ 
         if (!error && response.statusCode == 200) {
             res.json(body);
+            console.log("########## sendout 返回值 ##########");
+            comsole.log(body);
+
+
         }
     });
 })
@@ -179,6 +185,21 @@ router.get('/hotadd1',function(req,res,next){
         }
     });
 })
+
+router.get('/indexsearch',function(req,res,next){
+    console.log("########## indexsearch Run ##########");
+    var searchvalue = req.query.searchvalue;
+    console.log("searchvalue: "+searchvalue);
+    request.post({url:'http://127.0.0.1/bishegogogo/CI/article/indexsearch',form:{searchvalue:searchvalue}},function(error,response,body){ 
+        if (!error && response.statusCode == 200) {
+            console.log("*****indexsearch 返回值");
+            res.json(body);
+            console.log(body);
+
+        }
+    });
+})
+
 
 
 module.exports = router;
