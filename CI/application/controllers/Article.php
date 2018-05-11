@@ -15,11 +15,13 @@ class Article extends CI_Controller {
 	public function sendOut(){
         $articletitle=$this->input->post("articletitle");
         $articletext=$this->input->post("articletext");
+        $uname=$this->input->post("uname");
+
         $uid=$this->input->post("uid");
         $t=time();
 		$nowtime = date("Y-m-d h:i:sa",$t);
 		$this->load->model('Article_model');
-		$result=$this->Article_model->send_out($articletitle,$articletext,$uid,$nowtime);// 参数顺序会影响结果
+		$result=$this->Article_model->send_out($articletitle,$articletext,$uname,$uid,$nowtime);// 参数顺序会影响结果
 		echo $result;
 	}
 	public function showcontainer(){

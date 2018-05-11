@@ -7,7 +7,7 @@
         </router-link>
       </div>
       <div class="index-next-release" @click="toNewArticle"><div class="index-next-release-div"><span class="glyphicon glyphicon-ok"></span></div></div>
-      <div style="height:1rem"></div>
+
   </div>
 </template>
 

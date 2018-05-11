@@ -16,28 +16,43 @@ export default {
   data() {
     return {
     	articletitle: '',
-		articletext:''
+		  articletext:'',
+      articleauthor:'',
+
     }
   },
   methods:{
   	sendOut:function(){
-  		var uid = sessionStorage.getItem("u_id");
+      var uid = sessionStorage.getItem("u_id");
   		Axios.get("http://localhost:3000/sendout",{
   			params:{
   				articletitle:this.articletitle,
-  				articletext:this.articletext,
+          articletext:this.articletext,
+  				uname:this.articleauthor,
   				uid:uid
   			}
   		}).then((res)=>{
 
   		});
-    this.$router.push({path:"/index"});
+      this.$router.push({path:"/index"});
 
   	}
       
   },
   mounted(){
+      var value = sessionStorage.getItem("u_id");
+      // 这个Axios用来输出用户信息
+      Axios.get('http://localhost:3000/showInformation',{//showInformation 输出信息
+        params:{
+          value:value
+        }
+      }).then((res)=>{
+        var value2=JSON.parse(res.data);
+        console.log(value2);
+        this.articleauthor = value2.u_name;
+        console.log(this.articleauthor);
 
+      });
   }
 }
 </script>

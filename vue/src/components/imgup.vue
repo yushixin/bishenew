@@ -1,6 +1,6 @@
 <template>
   <div id="imgup">
-	<div id="result"></div>
+	<div id="result" style="weith：100px;"></div>
 	<form name="form1" id="form1">  
         <p>photo:<input type="file" name="photo" id="photo"></p>  
         <p><input type="button" name="b1" value="submit"  @click="fsubmit"/></p>  

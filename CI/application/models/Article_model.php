@@ -2,11 +2,12 @@
 	if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Article_model extends CI_Model {
-    public function send_out($articletitle,$articletext,$uid,$nowtime){//发表文章
+    public function send_out($articletitle,$articletext,$uname,$uid,$nowtime){//发表文章
       	$arr = array(  
                     'a_id'      =>  null,
 					'a_title'   =>  $articletitle,
 					'a_article' =>  $articletext,
+                    'u_name' =>  $uname,
                     'u_id'      =>  $uid,
                     'a_time'    =>  $nowtime
                                                     );
@@ -15,7 +16,7 @@ class Article_model extends CI_Model {
 	 	 return $query->num_row();
     }
     public function show_container(){
-    	$sql = "SELECT * FROM article";
+    	$sql = "SELECT * FROM article order by a_id desc";
 		$query=$this->db->query($sql);
 		return $query->result();
 

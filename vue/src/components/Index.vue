@@ -1,7 +1,8 @@
 <template>
   <div id="index">
 	<common-header></common-header>
-    <router-view></router-view>
+	<!-- <index-assembly-popup></index-assembly-popup> -->
+	<router-view></router-view>
 	<common-footer></common-footer>
   </div>
 </template>
@@ -11,6 +12,7 @@
   import CommonHeader from './common/CommonHeader'
   import CommonFooter from './common/CommonFooter'
   import IndexNext from './IndexNext'
+  import IndexAssemblyPopup from './IndexAssemblyPopup'
 
 
 		export default {
@@ -22,7 +24,7 @@
 			components:{
     			CommonHeader,
     			CommonFooter,
-    			IndexNext
+    			IndexAssemblyPopup
  			},
  			methods:{
  				gameover:function(){

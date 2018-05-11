@@ -76,8 +76,9 @@ router.get('/changeInformation',function(req,res,next){
 router.get('/sendout',function(req,res,next){
     var articletitle = req.query.articletitle;
     var articletext = req.query.articletext;
+    var uname = req.query.uname;
     var uid = req.query.uid;
-    request.post({url:'http://127.0.0.1/bishegogogo/CI/article/sendOut',form:{articletitle:articletitle,articletext:articletext,uid:uid}},function(error,response,body){ 
+    request.post({url:'http://127.0.0.1/bishegogogo/CI/article/sendOut',form:{articletitle:articletitle,articletext:articletext,uname:uname,uid:uid}},function(error,response,body){ 
         if (!error && response.statusCode == 200) {
             res.json(body);
         }

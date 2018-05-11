@@ -1,32 +1,34 @@
 <template>
 	<div class="header1-page-center header_1">
-    <div class="header1-page-center header_1_left">
-        <div class="header1-page-center header_1_left-div"><span class="header1-page-center glyphicon glyphicon-align-justify"></span></div>
-    </div>
 
-    <div class="header1-page-center header_1_middle">
-        <div class="dropdown">
-            <button class="button-all btn btn-default dropdown-toggle header_1_middle-button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              全部
-              <span class="caret"></span>
-            </button>
-            <button class="button-top displaynone btn btn-default dropdown-toggle header_1_middle-button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              热门
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li @click="toindexall"><router-link to="/index/indexall">全部</router-link></li>
-              <li @click="toindextop"><router-link to="/index/indextop">热门</router-link></li>
-            </ul>
+        <div class="header1-page-center header_1_left">
+            <div class="header1-page-center header_1_left-div"><span class="header1-page-center glyphicon glyphicon-align-justify"></span></div>
         </div>
-    </div>
 
-    <div class="header1-page-center header_1_right">
-      <div class="header_1_right-input"><div class="header_1_right-input-div"><div><input type="text" name="" id=""></div></div></div>
-      <div class="header_1_right-icon" @click="to_SearchPage">
-        <div><span class="glyphicon glyphicon-search"></span></div>
-      </div>
-    </div>
+        <div class="header1-page-center header_1_middle">
+            <div class="dropdown">
+                <button class="button-all btn btn-default dropdown-toggle header_1_middle-button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  全部
+                  <span class="caret"></span>
+                </button>
+                <button class="button-top displaynone btn btn-default dropdown-toggle header_1_middle-button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  热门
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li @click="toindexall"><router-link to="/index/indexall">全部</router-link></li>
+                  <li @click="toindextop"><router-link to="/index/indextop">热门</router-link></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="header1-page-center header_1_right">
+          <div class="header_1_right-input"><div class="header_1_right-input-div"><div><input type="text" name="" id=""></div></div></div>
+          <div class="header_1_right-icon" @click="to_SearchPage">
+            <div><span class="glyphicon glyphicon-search"></span></div>
+          </div>
+        </div>
+        
 	</div>
 </template>
 
