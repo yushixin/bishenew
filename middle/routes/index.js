@@ -200,6 +200,19 @@ router.get('/indexsearch',function(req,res,next){
     });
 })
 
+router.get('/adminlogin',function(req,res,next){
+    console.log("########## adminlogin Run ##########");
+    var adminname = req.query.adminname;
+    var adminpaw = req.query.adminpaw;
+    
+    console.log("adminname: "+adminname);
+    request.post({url:'http://127.0.0.1/bishegogogo/CI/admin/adminlogin',form:{adminname:adminname,adminpaw:adminpaw}},function(error,response,body){ 
+        if (!error && response.statusCode == 200) {
+            console.log("*****adminlogin 返回值");
+            res.json(body);
+            console.log(body);
 
-
+        }
+    });
+})
 module.exports = router;

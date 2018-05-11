@@ -25,6 +25,8 @@ import Comment        from '@/components/Articlepage/Comment'
 import ImprovingPetInformation from '@/components/Cat/ImprovingPetInformation'
 
 import imgup          from '@/components/imgup'
+import adminindex        from '@/components/Admin/adminindex'
+import adminlogin        from '@/components/Admin/adminlogin'
 
 
 
@@ -127,6 +129,16 @@ export default new Router({
       path: '/search',
       name: 'search',
       component: search
+    },
+    {
+      path : '/adminindex',
+      name : 'adminindex',
+      component: adminindex
+    },    
+    {
+      path : '/adminlogin',
+      name : 'adminlogin',
+      component: adminlogin
     }
   ]
 })

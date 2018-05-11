@@ -1,7 +1,7 @@
 <template>
 	<div class="header1-page-center header_1">
 
-        <div class="header1-page-center header_1_left">
+        <div class="header1-page-center header_1_left" @click="door">
             <div class="header1-page-center header_1_left-div"><span class="header1-page-center glyphicon glyphicon-align-justify"></span></div>
         </div>
 
@@ -73,6 +73,9 @@ export default {
       toindextop:function(){
         $(".button-top").removeClass("displaynone");
         $(".button-all").addClass("displaynone");
+      },
+      door:function(){
+          this.$router.push({path:"/adminlogin"});
       }
   },
   mounted(){
