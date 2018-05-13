@@ -69,4 +69,5 @@ class Article extends CI_Controller {
 		$result=$this->Article_model->index_search($searchvalue);
 		echo json_encode($result);
 	}
+	
 }

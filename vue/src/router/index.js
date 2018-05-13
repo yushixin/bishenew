@@ -1,48 +1,34 @@
-import Vue            from 'vue'
-import Router         from 'vue-router'
-import reg            from '@/components/reg'
-import PersonalCenter from '@/components/PersonalCenter'
-import login          from '@/components/login'
-import index          from '@/components/Index'
-import indexall       from '@/components/index/indexall'
-import indextop       from '@/components/index/indextop'
-
-import search         from '@/components/search'
-
-// import IndexNext      from '@/components/IndexNext'
-
-import WillDie        from '@/components/WaitPage/WillDie'
-import willvue        from '@/components/WaitPage/willvue'
-import willvue2       from '@/components/WaitPage/willvue2'
-
-import updatapage     from '@/components/updatapage/updatapage'
-import changeHeadimg  from '@/components/updatapage/changeHeadimg'
-
-import NewArticle     from '@/components/Articlepage/NewArticle'
-import ArticleDetails from '@/components/Articlepage/ArticleDetails'
-import Comment        from '@/components/Articlepage/Comment'
-
-import ImprovingPetInformation from '@/components/Cat/ImprovingPetInformation'
-
-import imgup          from '@/components/imgup'
-import adminindex        from '@/components/Admin/adminindex'
-import adminlogin        from '@/components/Admin/adminlogin'
-
-
+import Vue                      from 'vue'
+import Router                   from 'vue-router'
+import reg                      from '@/components/reg'
+import PersonalCenter           from '@/components/PersonalCenter'
+import login                    from '@/components/login'
+import index                    from '@/components/Index'
+import indexall                 from '@/components/index/indexall'
+import indextop                 from '@/components/index/indextop'
+import search                   from '@/components/search'
+import WillDie                  from '@/components/WaitPage/WillDie'
+import WillDie2                 from '@/components/WaitPage/WillDie2'
+import willvue                  from '@/components/WaitPage/willvue'
+import willvue2                 from '@/components/WaitPage/willvue2'
+import updatapage               from '@/components/updatapage/updatapage'
+import changeHeadimg            from '@/components/updatapage/changeHeadimg'
+import NewArticle               from '@/components/Articlepage/NewArticle'
+import ArticleDetails           from '@/components/Articlepage/ArticleDetails'
+import Comment                  from '@/components/Articlepage/Comment'
+import ImprovingPetInformation  from '@/components/Cat/ImprovingPetInformation'
+import imgup                    from '@/components/imgup'
+import adminindex               from '@/components/Admin/adminindex'
+import adminlogin               from '@/components/Admin/adminlogin'
+import AdminArticlePage         from '@/components/Admin/AdminArticlePage'
+import AdminCommodityPage       from '@/components/Admin/AdminCommodityPage'
+import AdminUserPage            from '@/components/Admin/AdminUserPage'
 
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
-    // {
-    //   path: '/',
-    //   redirect: '/index'
-    // },
-    // {
-    //   path: '/index',
-    //   component: index
-    // },
     {
       path:'/index',
       redirect:'/index/indexall'
@@ -79,6 +65,11 @@ export default new Router({
       path: '/WillDie',
       name: 'WillDie',
       component: WillDie
+    },
+    {
+      path: '/WillDie2',
+      name: 'WillDie2',
+      component: WillDie2
     },
         {
       path: '/willvue',
@@ -139,6 +130,21 @@ export default new Router({
       path : '/adminlogin',
       name : 'adminlogin',
       component: adminlogin
+    },    
+    {
+      path : '/AdminArticlePage',
+      name : 'AdminArticlePage',
+      component: AdminArticlePage
+    },    
+    {
+      path : '/AdminCommodityPage',
+      name : 'AdminCommodityPage',
+      component: AdminCommodityPage
+    },    
+    {
+      path : '/AdminUserPage',
+      name : 'AdminUserPage',
+      component: AdminUserPage
     }
   ]
 })

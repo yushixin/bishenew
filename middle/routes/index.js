@@ -219,4 +219,20 @@ router.get('/adminlogin',function(req,res,next){
         }
     });
 })
+router.get('/showAllArticleData',function(req,res,next){
+    request.get('http://127.0.0.1/bishegogogo/CI/admin/showAllArticleData',function(error, response, body){
+        if (!error && response.statusCode == 200) {
+            res.json(body);
+            console.log(body);
+        }
+    });
+})
+router.get('/showAllUserData',function(req,res,next){
+    request.get('http://127.0.0.1/bishegogogo/CI/admin/showAllUserData',function(error, response, body){
+        if (!error && response.statusCode == 200) {
+            res.json(body);
+            console.log(body);
+        }
+    });
+})
 module.exports = router;

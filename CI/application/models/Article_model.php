@@ -71,4 +71,5 @@ class Article_model extends CI_Model {
         $query = $this->db->query($sql);
         return $query->result();
     }
+
 }

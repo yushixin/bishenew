@@ -19,5 +19,15 @@ class Admin extends CI_Controller {
 		$result=$this->Admin_model->admin_login($adminname,$adminpaw);
 		echo json_encode($result);
 	}
+	public function showAllArticleData(){
+		$this->load->model('Admin_model');
+		$result = $this->Admin_model->show_AllArticleData();
+		echo json_encode($result);
+	}	
+	public function showAllUserData(){
+		$this->load->model('Admin_model');
+		$result = $this->Admin_model->show_AllUserData();
+		echo json_encode($result);
+	}
 
 }
