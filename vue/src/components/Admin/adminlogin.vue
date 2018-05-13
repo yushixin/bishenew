@@ -1,12 +1,14 @@
 <template>
   <div id="admin-login">
 		
-  		<div class="adminindexcenter admin-login-outbox">
-  			<div class="adminindexcenter admin-login-inbox">
-	  			<div class="adminindexcenter admin-login-inbox-name"><input type="text" v-model="adminname"></div>
-				<div class="adminindexcenter admin-login-inbox-password"><input type="password"  v-model="adminpaw"></div>
-				<div class="adminindexcenter admin-login-inbox-loginbutton" @click="adminlogin">登录</div>
-  			</div>
+  		<div class=" admin-login-outbox">
+			<div class="adminindexcenter admin-login-inbox-name"><input type="text" v-model="adminname" placeholder="账号"></div>
+			<div class="adminindexcenter admin-login-inbox-password"><input type="password"  v-model="adminpaw" placeholder="密码"></div>
+			<div class="adminindexcenter admin-login-inbox-loginbutton" @click="adminlogin">登录</div>	
+  			<div class="adminindexcenter admin-login-inbox-prompt" v-if="flag == 2">账号密码不能为空</div>
+  			<div class="adminindexcenter admin-login-inbox-prompt" v-if="flag == 3">账号密码错误</div>
+  			<div class="" v-if="flag == 1"></div>
+
   		</div>
 
 
@@ -20,7 +22,8 @@
 			data () {
 				return {
 					adminname:"",
-					adminpaw:""
+					adminpaw:"",
+					flag:"1"
 				}
 			},
 			components:{
@@ -28,17 +31,33 @@
  			},
  			methods:{
  				adminlogin:function(){
- 					console.log(this.adminname);
- 					console.log(this.adminpaw);
- 					Axios.get("http://localhost:3000/adminlogin",{
-						params:{
-							adminname:this.adminname,
-							adminpaw:this.adminpaw
-						}
-					}).then((res)=>{
-						var token = JSON.parse(res.data);
-						console.log(token);
-					})
+ 					if(this.adminname.length>0&&this.adminpaw.length>0){
+ 						console.log("账号密码不为空");
+ 						this.flag = 1;
+ 						Axios.get("http://localhost:3000/adminlogin",{
+							params:{
+								adminname:this.adminname,
+								adminpaw:this.adminpaw
+							}
+						}).then((res)=>{
+							var token = JSON.parse(res.data);
+							if(token == null){
+ 								this.flag = 3;
+								console.log("godu_id is null")
+							}else{
+								console.log("godu_id is ："+token.godu_id.length)
+								var godu_id = token.godu_id;
+								var godu_name = token.godu_name;
+								sessionStorage.setItem('godu_id',godu_id);
+								sessionStorage.setItem('godu_name',godu_name);
+								this.$router.push({path:"/adminindex"});
+							}
+						})
+ 					}else{
+ 						console.log("账号密码为空");
+ 						this.flag = 2;
+ 					}
+
  				}
  				
  			},
@@ -65,6 +84,9 @@
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
+		width: 1024px;	
+		height: 1366px;	
+		background: #222;
 	}
 	.admin-login-outbox{
 		position:absolute;
@@ -72,19 +94,25 @@
         top:50%;
         transform: translate(-50%,-50%); /*自己的50% */
 
-		width: 2rem;
-		height: 1rem;
+		width: 3rem;
+		height: 2rem;
+		font-size: 0.3rem;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
 	}
 	.admin-login-inbox{
-		width: 70%;
-		height: 70%;
+		/*flex: 3;*/
+		width: 100%;
+		height: 1.5rem;
 		flex-direction: column;
-		font-size: 0.1rem;
+		font-size: 0.3rem;
 	}
 	.admin-login-inbox-name{
 		width: 100%;
-		height: 100%;
-		flex: 1;
+		/*height: 100%;*/
+		height: 0.5rem;	
+		/*flex: 1;*/
 		background: red;
 	}
 	.admin-login-inbox-name input{
@@ -93,19 +121,27 @@
 	}
 	.admin-login-inbox-password{
 		width: 100%;
-		height: 100%;
+		height: 0.5rem;	
 		background: blue;
-		flex: 1;
+		/*flex: 1;*/
 	}
 	.admin-login-inbox-password input{
 		width: 100%;
 		height: 100%;
 	}
 	.admin-login-inbox-loginbutton{
-		flex: 1;
+		/*flex: 1;*/
 		width: 100%;
-		height: 100%;
+		height: 0.5rem;	
 		background: #33CC66;
 		color: #fff;
+	}
+	.admin-login-inbox-prompt{
+
+		flex: 1;
+		width: 100%;
+		height: 100%;	
+		background: #FF0033;
+		color:#fff;
 	}
 </style>

@@ -200,6 +200,10 @@ router.get('/indexsearch',function(req,res,next){
     });
 })
 
+
+
+// 管理员部分
+// 
 router.get('/adminlogin',function(req,res,next){
     console.log("########## adminlogin Run ##########");
     var adminname = req.query.adminname;

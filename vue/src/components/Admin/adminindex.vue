@@ -1,6 +1,6 @@
 <template>
   <div id="admin-index">
-  		<div></div>
+  		<div class="admin-index-header"></div>
   		<div></div>
 		
   </div>
@@ -33,5 +33,8 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		width: 1024px;	
+		height: 1366px;	
+		background: #222;
 	}
 </style>
