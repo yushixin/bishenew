@@ -29,5 +29,25 @@ class Admin extends CI_Controller {
 		$result = $this->Admin_model->show_AllUserData();
 		echo json_encode($result);
 	}
-
+	public function deleteuser(){
+		$data=$this->input->get("deleteid");
+		$deleteid = explode(",", $data);
+		$this->load->model('Admin_model');
+		$result = $this->Admin_model->delete_user($deleteid);
+		echo json_encode($result);
+	}
+	public function deleteArticle(){
+		$data=$this->input->get("deleteid");
+		$deleteid = explode(",", $data);
+		$this->load->model('Admin_model');
+		$result = $this->Admin_model->delete_Article($deleteid);
+		echo json_encode($result);
+	}
+	public function updataRecommend(){
+		$data = $this->input->get("updataid");
+		$updataid = explode(",", $data);
+		$this->load->model('Admin_model');
+		$result = $this->Admin_model->updata_Recommend($updataid);
+		echo json_encode($result);
+	}
 }

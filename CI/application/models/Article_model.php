@@ -11,6 +11,7 @@ class Article_model extends CI_Model {
                     'u_id'      =>  $uid,
                     'a_time'    =>  $nowtime,
                     'a_hot'    =>  1,
+                    'a_articlepush'    =>  1,
 
                                                     );
 	  	$sql = $this->db->insert_string('article', $arr);

@@ -5,9 +5,9 @@
 			<div class="adminindexcenter admin-login-inbox-name"><input type="text" v-model="adminname" placeholder="账号"></div>
 			<div class="adminindexcenter admin-login-inbox-password"><input type="password"  v-model="adminpaw" placeholder="密码"></div>
 			<div class="adminindexcenter admin-login-inbox-loginbutton" @click="adminlogin">登录</div>	
-  			<div class="adminindexcenter admin-login-inbox-prompt" v-if="flag == 2">账号密码不能为空</div>
-  			<div class="adminindexcenter admin-login-inbox-prompt" v-if="flag == 3">账号密码错误</div>
-  			<div class="" v-if="flag == 1"></div>
+  			<div class="adminindexcenter admin-login-inbox-prompt" v-if="this.flag == 2">账号密码不能为空</div>
+  			<div class="adminindexcenter admin-login-inbox-prompt" v-if="this.flag == 3">账号密码错误</div>
+  			<div class="" v-if="this.flag == 1"></div>
 
   		</div>
 

@@ -80,12 +80,10 @@ export default {
             catid:catid
           }
         }).then((res)=>{
-            // console.log(res.data);
           var value=JSON.parse(res.data);
           console.log("sssss");
           console.log(value);
           this.$router.push({path:"/willvue2"});
-          // 
         });
         
       }
@@ -103,10 +101,13 @@ export default {
           console.log(value2);
           _this.data = value2;
           console.log(_this.data.u_img);
-          if(_this.data.u_img){
+
+          if(_this.data.u_img == null){
+            _this.src = 'http://127.0.0.1/img/TX/mr.jpg'
+
+          }else if(_this.data.u_img){
             _this.src = 'http://127.0.0.1/img/TX/' + _this.data.u_img;
-          }else if(_this.data.u_img == null){
-            _this.src = 'http://127.0.0.1/img/TX/mrxianshi.jpg'
+
           }
         });
         // 这个Axios用来输出宠物信息

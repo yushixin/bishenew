@@ -235,4 +235,45 @@ router.get('/showAllUserData',function(req,res,next){
         }
     });
 })
+// router.post('/deleteuser', function (req, res, next) {  
+//     var deleteid = req.body.deleteid;  
+//     console.log('deleteid:' + deleteid);  
+
+// });
+router.get('/deleteuser',function(req,res,next){
+    var deleteid = req.query.deleteid;
+    console.log("########## deleteuser Run ##########");
+    console.log(deleteid);
+    request.get('http://127.0.0.1/bishegogogo/CI/admin/deleteuser?deleteid='+deleteid,function(error, response, body){
+        if (!error && response.statusCode == 200) {
+            res.json(body);
+            console.log("########## 返回值 Run ##########");
+            console.log(body);
+        }
+    });
+})
+router.get('/deleteArticle',function(req,res,next){
+    var deleteid = req.query.deleteid;
+    console.log("########## deleteArticle Run ##########");
+    console.log(deleteid);
+    request.get('http://127.0.0.1/bishegogogo/CI/admin/deleteArticle?deleteid='+deleteid,function(error, response, body){
+        if (!error && response.statusCode == 200) {
+            res.json(body);
+            console.log("########## 返回值 Run ##########");
+            console.log(body);
+        }
+    });
+})
+router.get('/updataRecommend',function(req,res,next){
+    var updataid = req.query.updataid;
+    console.log("########## updataRecommend Run ##########");
+    console.log(updataid);
+    request.get('http://127.0.0.1/bishegogogo/CI/admin/updataRecommend?updataid='+updataid,function(error, response, body){
+        if (!error && response.statusCode == 200) {
+            res.json(body);
+            console.log("########## 返回值 Run ##########");
+            console.log(body);
+        }
+    });
+})
 module.exports = router;

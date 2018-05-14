@@ -21,8 +21,11 @@ import imgup                    from '@/components/imgup'
 import adminindex               from '@/components/Admin/adminindex'
 import adminlogin               from '@/components/Admin/adminlogin'
 import AdminArticlePage         from '@/components/Admin/AdminArticlePage'
-import AdminCommodityPage       from '@/components/Admin/AdminCommodityPage'
 import AdminUserPage            from '@/components/Admin/AdminUserPage'
+import AdminCommodityPage       from '@/components/Admin/AdminCommodityPage'
+import AdminCommodityUpdata       from '@/components/Admin/AdminCommodityUpdata'
+
+
 
 
 Vue.use(Router)
@@ -145,6 +148,12 @@ export default new Router({
       path : '/AdminUserPage',
       name : 'AdminUserPage',
       component: AdminUserPage
+    }
+    ,    
+    {
+      path : '/AdminCommodityUpdata',
+      name : 'AdminCommodityUpdata',
+      component: AdminCommodityUpdata
     }
   ]
 })

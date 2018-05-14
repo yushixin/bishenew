@@ -1,14 +1,38 @@
 <template>
-  <div class="adminindexcenter admin-index">
-  		<div class="adminindexcenter admin-index-header">
-	  		<div class="adminindexcenter admin-index-header_left"><img src="../../assets/img/adminindexheader.jpg"></div>
-	  		<div class="adminindexcenter admin-index-header_middle">喵喵喵后台</div>
-	  		<div class="adminindexcenter admin-index-header_right" @click="godie">注销</div>
+  <div class="flexjz adminindex">
+  		<div class="flexjz adminindex-header">
+	  		<div class="flexjz adminindex-header_left"><img src="../../assets/img/adminindexheader.jpg"></div>
+	  		<div class="flexjz adminindex-header_middle">喵喵喵后台</div>
+	  		<div class="flexjz adminindex-header_right" @click="godie">注销</div>
   		</div>
-  		<div class="admin-index-content">
-  			<div class="adminindexcenter admin-index-content_Children-style admin-index-content-user" @click="touser">用户管理</div>
-  			<div class="adminindexcenter admin-index-content_Children-style admin-index-content-article" @click="toarticle">动态管理</div>
-  			<div class="adminindexcenter admin-index-content_Children-style admin-index-content-commodity" @click="tocommodity">商品管理</div>
+  		<div class="adminindex-content">
+  			<div class="flexjz unifier-style adminindex-content-user" @click="touser">用户管理</div>
+  			<div class="flexjz unifier-style adminindex-content-article" @click="toarticle">动态管理</div>
+  			<div class="flexjz unifier-style adminindex-content-commodity" @click="tocommodity">商品管理</div>
+  			<div class="flexjz unifier-style adminindex-content-data">
+				<div class="flexjz adminindex-content-data-up">
+					<div class="flexjz adminindex-content-data-user">
+						<div class="flexjz unifier-style2 unifier-style3">{{user}}</div>
+						<div class="flexjz unifier-style2 unifier-style4">注册用户</div>
+					</div>
+					<div class="flexjz adminindex-content-data-article">
+						<div class="flexjz unifier-style2 unifier-style3">{{article}}</div>
+						<div class="flexjz unifier-style2 unifier-style4">动态</div>
+					</div>
+				</div>
+				<div class="flexjz adminindex-content-data-down">
+					<div class="flexjz adminindex-content-data-user">
+						<div class="flexjz unifier-style2 unifier-style3">23</div>
+						<div class="flexjz unifier-style2 unifier-style4">商品缺货</div>
+					</div>
+					<div class="flexjz adminindex-content-data-article">
+						<div class="flexjz unifier-style2 unifier-style3">1</div>
+						<div class="flexjz unifier-style2 unifier-style4">未处理订单</div>
+					</div>
+				</div>
+
+  			</div>
+
   		</div>
   </div>
 </template>
@@ -20,6 +44,8 @@
 		  	name: 'index',
 			data () {
 				return {
+					user:"",
+					article:""
 				}
 			},
 			components:{
@@ -46,55 +72,74 @@
 		      	},
 		      	tocommodity:function(){
 		          this.$router.push({path:"/AdminCommodityPage"});
+		      	},
+		      	getdata:function(){
+		      		Axios.get('http://localhost:3000/showAllUserData')
+					.then((res)=>{
+						var userdata = JSON.parse(res.data);
+						this.user = userdata.length;
+					});
+					Axios.get('http://localhost:3000/showAllArticleData')
+					.then((res)=>{
+						var articledata = JSON.parse(res.data);
+						this.article = articledata.length;
+					});
 		      	}
  			},
 			mounted(){
 				this.youcan_or_yot_youcan_this_is_a_question();	
+				this.getdata();
 			}
 		}
 </script>
 
 
 <style scoped>
-	.adminindexcenter{
+	.flexjz{
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
-	.admin-index{
+	.flexjz{
+		display: flex;
+		align-items: center;
+
+	}
+
+	.adminindex{
 		width: 1024px;	
-		height: 1366px;	
+		height: 1366px;
 		background: #222;
 		flex-direction: column;
 	}
-	.admin-index-header{
+	.adminindex-header{
 		width: 100%;
 		height: 1rem;
 		background: #FE1D45;
 	}
-	.admin-index-header_left{
+	.adminindex-header_left{
 		width: 1rem;
 		height: 100%;
 		color: #fff;
 		font-size: 1rem;
 	}
-	.admin-index-header_left img{
+	.adminindex-header_left img{
 		width: 100%;
 		height: 100%;
 	}
-	.admin-index-header_middle{
+	.adminindex-header_middle{
 		height: 100%;
 		flex: 1;
 		color: #fff;
 		font-size: 0.5rem;
 	}	
-	.admin-index-header_right{
+	.adminindex-header_right{
 		width: 1rem;
 		height: 100%;
 		color: #fff;
 		font-size: 0.4rem;
 	}
-	.admin-index-content{
+	.adminindex-content{
 
 		flex: 1;
 		flex-direction: column;
@@ -106,13 +151,13 @@
 		display: flex;
 		align-items: center;
 	}
-	.admin-index-content-user{
+	.adminindex-content-user{
 		width: 100%;
 		height: 1rem;
 		background: #66FFFF;
 
 	}
-	.admin-index-content-article{
+	.adminindex-content-article{
 		/*flex: 1;*/
 		width: 100%;
 		height: 1rem;
@@ -120,16 +165,58 @@
 
 		
 	}
-	.admin-index-content-commodity{
+	.adminindex-content-commodity{
 		width: 100%;
 		height: 1rem;
 		background: #66FF99;
 	}
-	.admin-index-content_Children-style{
+	.adminindex-content-data{
+		width: 100%;
+		height: 2rem;
+		background: #66FF66;
+		flex-direction: column;
+		padding: 0.1rem;
+	}
+	.unifier-style{
 		margin-top: 0.2rem;
 		margin-left: 20px;
 		margin-right: 20px;
 		border:2px solid;
-		border-radius:25px;
+		border-radius:50px;
+	}
+	.adminindex-content-data-up{
+		flex: 1;
+		width: 100%;
+		flex-direction: row;
+	}
+	.adminindex-content-data-down{
+		flex: 1;
+		width: 100%;
+		flex-direction: row;
+	}
+	.adminindex-content-data-user{
+		flex: 1;
+		height: 100%;
+	}
+	.adminindex-content-data-article{
+		flex: 1;
+		height: 100%;
+	}
+	.unifier-style2{
+		flex-direction: column-reverse;
+
+		width: 100%;
+		height: 100%;
+		flex: 1;
+
+	}
+	.unifier-style3{
+		flex-direction: row-reverse;
+		color: red;
+		font-size: 0.5rem;
+	}
+	.unifier-style4{
+		flex-direction: row;
+		font-size: 0.25rem;
 	}
 </style>
