@@ -22,7 +22,7 @@
 				</div>
 				<div class="flexjz adminindex-content-data-down">
 					<div class="flexjz adminindex-content-data-user">
-						<div class="flexjz unifier-style2 unifier-style3">23</div>
+						<div class="flexjz unifier-style2 unifier-style3">{{commoditymaimeile}}</div>
 						<div class="flexjz unifier-style2 unifier-style4">商品缺货</div>
 					</div>
 					<div class="flexjz adminindex-content-data-article">
@@ -45,7 +45,8 @@
 			data () {
 				return {
 					user:"",
-					article:""
+					article:"",
+					commoditymaimeile: ""
 				}
 			},
 			components:{
@@ -83,6 +84,11 @@
 					.then((res)=>{
 						var articledata = JSON.parse(res.data);
 						this.article = articledata.length;
+					});
+					Axios.get('http://localhost:3000/showquehuo')
+					.then((res)=>{
+						var commoditydata = JSON.parse(res.data);
+						this.commoditymaimeile = commoditydata.length;
 					});
 		      	}
  			},

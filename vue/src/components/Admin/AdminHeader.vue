@@ -4,7 +4,7 @@
 		<span class="adminindexcenter glyphicon glyphicon-menu-left"></span>
 	</div>
 	<div class="adminindexcenter admin-header_right" :style="{background:$store.state.bgcolor}">{{$store.state.title}}</div>
-	<div class="adminindexcenter admin-header_rightright" :style="{background:$store.state.bgcolor}"><img src="../../assets/img/adminindexheader.jpg" alt=""></div>
+	<div class="adminindexcenter admin-header_rightright" :style="{background:$store.state.bgcolor}" @click="toindex"><img src="../../assets/img/adminindexheader.jpg" alt=""></div>
   </div>
 </template>
 
@@ -23,6 +23,9 @@
 				aa:function(){
 					history.go(-1);
 				},
+				toindex:function(){
+					this.$router.push({path:"/adminindex"});
+				}
  			},
 			mounted(){
 

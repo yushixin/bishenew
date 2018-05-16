@@ -1,38 +1,45 @@
 <template>
-  <div class="flexjuzhong admin-user-page">
+  <div class="flexjz admin-user-page">
 	<admin-header></admin-header>
 	<div style="height:0.7rem;"></div>
-	<div class="flexjuzhong admin-user-page-content">
-		<div class="flexjuzhong admin-user-page-content-up">
+	<div class="flexjz admin-user-page-content">
+		<div class="flexjz admin-user-page-content-up">
 			<div class="admin-user-page-content-up_left">
-				<div class="flexjuzhong admin-user-page-content-up_left-div1"><input @click="allselect" id="allselect"  type="checkbox" title="全选"></div>
+				<div class="flexjz admin-user-page-content-up_left-div1"><input @click="allselect" id="allselect"  type="checkbox" title="全选"></div>
 				<div class="admin-user-page-content-up_left-div2" >全选</div>
 			</div>
 			<div class="admin-user-page-content-up_middle"></div>
 			<div class="admin-user-page-content-up_right">
-				<div class="flexjuzhong" @click="deleteall">批量删除</div>
+				<div class="flexjz" @click="deleteall">批量删除</div>
 			</div>
 		</div>
-		<div class="flexjuzhong admin-user-page-content-down">
-			<div class="flexjuzhong a-u-p-content-down-header">
-				<div class="flexjuzhong flex05"></div>
-				<div class="flexjuzhong flex1">ID</div>
-				<div class="flexjuzhong flex1">NAME</div>
-				<div class="flexjuzhong flex1">AGE</div>
-				<div class="flexjuzhong flex1">GENDER</div>
-				<div class="flexjuzhong flex05"></div>
+		<div class="flexjz admin-user-page-content-down">
+			<div class="flexjz a-u-p-content-down-header">
+				<div class="flexjz flex05"></div>
+				<div class="flexjz flex1">ID</div>
+				<div class="flexjz flex1">NAME</div>
+				<div class="flexjz flex1">AGE</div>
+				<div class="flexjz flex1">GENDER</div>
+				<div class="flexjz flex05"></div>
 			</div>
 			<div class="a-u-p-content-down-content">
-				<div class="flexjuzhong a-u-p-content-down-content-next" v-for="(userdatas,index) in userdata">
-					<div class="flexjuzhong aupcdcn-ck flex05"><input type="checkbox" name="fxk" :data-catid="userdatas.u_id"></div>
-					<div class="flexjuzhong aupcdcn-id flex1">{{userdatas.u_id}}</div>
-					<div class="flexjuzhong aupcdcn-name flex1">{{userdatas.u_name}}</div>
-					<div class="flexjuzhong aupcdcn-age flex1">{{userdatas.u_age}}</div>
-					<div class="flexjuzhong aupcdcn-gender flex1">{{userdatas.u_gender}}</div>
-					<div class="flexjuzhong aupcdcn-message flex05"><span class="glyphicon glyphicon-send"></span></div>
+				<div class="flexjz a-u-p-content-down-content-next" v-for="(userdatas,index) in userdata">
+					<div class="flexjz aupcdcn-ck flex05"><input type="checkbox" name="fxk" :data-catid="userdatas.u_id"></div>
+					<div class="flexjz aupcdcn-id flex1">{{userdatas.u_id}}</div>
+					<div class="flexjz aupcdcn-name flex1">{{userdatas.u_name}}</div>
+					<div class="flexjz aupcdcn-age flex1">{{userdatas.u_age}}</div>
+					<div class="flexjz aupcdcn-gender flex1">{{userdatas.u_gender}}</div>
+					<div class="flexjz aupcdcn-message flex05" @click="sendMessage(index)"><span class="glyphicon glyphicon-send"></span></div>
 				</div>
 			</div>
-
+		</div>
+	</div>
+	<div class="flexjz admin-user-page-message" v-if="flag==2">
+		<div class="flexjz message">
+			<div class="flex1 message-close"><div class="flexjz" @click="closemessage"><span class="flexjz glyphicon glyphicon-menu-left"></span></div></div>
+			<div class="flexjz flex1 message-showaim"><div class="flexjz flex05" >to:</div><p class="flexjz flex1">{{aimusername}}</p><div class=" flexjz flex2" ></div></div>
+			<div class="flexjz flex1 message-input"><input type="text"></div>
+			<div class="flexjz flex1 message-submit"><div class="flexjz">提交</div></div>
 		</div>
 	</div>
   </div>
@@ -46,7 +53,10 @@
 		  	name: 'admin-user-page',
 			data () {
 				return {
-					userdata:[]
+					userdata:[],
+					aim:"",
+					aimusername:"",
+					flag:"1"
 				}
 			},
 			components:{
@@ -57,7 +67,6 @@
 	 				Axios.get('http://localhost:3000/showAllUserData')
 					.then((res)=>{
 						this.userdata = JSON.parse(res.data);
-						console.log(this.userdata);
 					});
  				},
  				allselect:function(){
@@ -71,8 +80,6 @@
  				},
  				deleteall:function(){
  					var checkBoxArr  = $(":input[name=fxk]");
- 					console.log(checkBoxArr );
-
  					var arr = new Array()
  					for (var i = 0 ; i < checkBoxArr.length ; i++) {
  						if(checkBoxArr[i].checked == true){
@@ -86,18 +93,27 @@
 			        }).then((res)=>{
 			            // console.log(res.data);
 			          var value=JSON.parse(res.data);
-			          console.log(value);
 			          if(value==true){
 			          	location.reload();
 			          }
 			        });
- 				}
+ 				},	
+				sendMessage:function(index){
+					console.log(this.userdata[index].u_id);
+					this.aim=this.userdata[index].u_id;
+					this.aimusername=this.userdata[index].u_name;
+					console.log(this.aim);
+					console.log(this.aimusername);
+					this.flag = 2;
+				},
+				closemessage:function(){
+					this.aim = "";
+					this.aimusername ="";
+					this.flag = 1;
+				}
  			},
 			mounted(){
 				this.$store.dispatch('changeTitle',['用户管理','ddd','#66FFFF']);
-				// if(!confirm("确定要删除这些图书吗？")){
-				// 	return ;
-				// }
 				this.getData();
 			}
 		}
@@ -105,7 +121,10 @@
 
 
 <style scoped>
-	.flexjuzhong{
+p{
+	margin:0;
+}
+	.flexjz{
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -240,4 +259,66 @@
 		height: 100%;
 
 	}
+
+	.admin-user-page-message{
+		position: fixed;
+		top: 0.7rem;
+		background: #222;
+		color: #fff;
+		width: 100%;
+		height: 8rem;
+		padding-left: 1rem;
+		padding-right: 1rem;
+		opacity:0.9;
+	}
+	.message{
+		height: 3rem;
+		width: 100%;
+		flex-direction: column;
+		font-size: 0.4rem;
+	}
+	.message-close{
+		display: flex;
+		width: 90%;
+		flex-direction: row-reverse;
+	}
+	.message-close div{
+		height: 100%;
+		width: 0.8rem;
+		background: #FE1D45;
+		color: #000;
+
+	}
+	.message-close div span{
+		height: 100%;
+		width: 100%;
+		font-size: 0.8rem;
+		color: #222;
+
+	}
+	.message-showaim{
+		width: 90%;
+
+	}
+	.message-showaim p{
+		color: #66FFFF;
+		font-size: 0.7rem;
+	}
+	.message-input{
+		width: 90%;
+	}
+	.message-input input{
+		width: 100%;
+		color: #000;
+		padding-left:10px;
+	}
+	.message-submit{
+		width: 90%;
+	}
+	.message-submit div{
+		width: 100%;
+		background: #66FFFF;
+		color: #000;
+	}
+
 </style>

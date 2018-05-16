@@ -17,6 +17,16 @@ class Admin_model extends CI_Model {
 		$query=$this->db->query($sql);
 		return $query->result();
 	}
+	public function show_AllCommodity(){
+		$sql = "SELECT * FROM commodity";
+		$query=$this->db->query($sql);
+		return $query->result();
+	}
+	public function show_quehuo(){
+		$sql = "SELECT * FROM commodity where commodity_stock = 0";
+		$query=$this->db->query($sql);
+		return $query->result();
+	}
 	public function delete_user($deleteid){
 		$sql = "DELETE FROM user where u_id in ?";
 		$query = $this->db->query($sql,array($deleteid));
@@ -28,6 +38,11 @@ class Admin_model extends CI_Model {
 		$query = $this->db->query($sql,array($deleteid));
 		return $query;
 	}
+	public function delete_Commodity($commodityid){
+		$sql = "DELETE FROM commodity where commodity_id = ?";
+		$query = $this->db->query($sql,array($commodityid));
+		return $query;
+	}
     
     public function updata_Recommend($updataid){
     	$sql1 = "UPDATE article SET a_articlepush = 1 where a_articlepush = 0";
@@ -36,4 +51,18 @@ class Admin_model extends CI_Model {
 		$query2 = $this->db->query($sql2,array($updataid));
 		return $query2;
 	}
+	public function insert_Commodity($ccname,$ccnum,$ccprice,$cccategory,$stock){
+				$arr = array(
+					'commodity_id'    =>  null,
+					'commodity_name'  =>  $ccname,
+					'commodity_num'   =>  $ccnum,
+					'commodity_price'   =>  $ccprice,
+					'commodity_category'   =>  $cccategory,
+					'commodity_stock'   =>  $stock,
+				);
+				$sql = $this->db->insert_string('commodity', $arr);
+				$query=$this->db->query($sql);
+				return $query;
+	}
+
 }

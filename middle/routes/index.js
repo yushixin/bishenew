@@ -13,7 +13,7 @@ router.get('/reg',function(req,res,next){
     console.log(password);
     request.get('http://127.0.0.1/bishegogogo/CI/user/reg?username='+username+"&password="+password,function(error, response, body){
         if (!error && response.statusCode == 200) {
-            // console.log(body);
+            // 
             res.json(body);
         }
     });
@@ -95,7 +95,7 @@ router.get('/showcontainer',function(req,res,next){
     request.get('http://127.0.0.1/bishegogogo/CI/article/showcontainer',function(error, response, body){
         if (!error && response.statusCode == 200) {
             res.json(body);
-            console.log(body);
+            
         }
     });
 })
@@ -103,7 +103,7 @@ router.get('/showcontainertop',function(req,res,next){
     request.get('http://127.0.0.1/bishegogogo/CI/article/showcontainertop',function(error, response, body){
         if (!error && response.statusCode == 200) {
             res.json(body);
-            console.log(body);
+            
         }
     });
 })
@@ -138,7 +138,7 @@ router.get('/catDelete',function(req,res,next){
     request.post({url:'http://127.0.0.1/bishegogogo/CI/Cat/catDelete',form:{catid:catid}},function(error,response,body){ 
         if (!error && response.statusCode == 200) {
             console.log("*****");
-            console.log(body);
+            
             res.json(body);
         }
     });
@@ -156,7 +156,7 @@ router.get('/commentsend',function(req,res,next){
     request.post({url:'http://127.0.0.1/bishegogogo/CI/article/commentsend',form:{value:value,nowuserid:nowuserid,articleid:articleid,sendername:sendername}},function(error,response,body){ 
         if (!error && response.statusCode == 200) {
             console.log("*****返回值");
-            console.log(body);
+            
             res.json(body);
         }
     });
@@ -180,7 +180,7 @@ router.get('/hotadd1',function(req,res,next){
         if (!error && response.statusCode == 200) {
             console.log("*****hotadd1 返回值");
             res.json(body);
-            console.log(body);
+            
 
         }
     });
@@ -194,7 +194,7 @@ router.get('/indexsearch',function(req,res,next){
         if (!error && response.statusCode == 200) {
             console.log("*****indexsearch 返回值");
             res.json(body);
-            console.log(body);
+            
 
         }
     });
@@ -214,7 +214,7 @@ router.get('/adminlogin',function(req,res,next){
         if (!error && response.statusCode == 200) {
             console.log("*****adminlogin 返回值");
             res.json(body);
-            console.log(body);
+            
 
         }
     });
@@ -223,7 +223,7 @@ router.get('/showAllArticleData',function(req,res,next){
     request.get('http://127.0.0.1/bishegogogo/CI/admin/showAllArticleData',function(error, response, body){
         if (!error && response.statusCode == 200) {
             res.json(body);
-            console.log(body);
+            
         }
     });
 })
@@ -231,15 +231,32 @@ router.get('/showAllUserData',function(req,res,next){
     request.get('http://127.0.0.1/bishegogogo/CI/admin/showAllUserData',function(error, response, body){
         if (!error && response.statusCode == 200) {
             res.json(body);
+            
+        }
+    });
+})
+router.get('/showAllCommodity',function(req,res,next){
+    console.log("########## showAllCommodity Run ##########");
+
+    request.get('http://127.0.0.1/bishegogogo/CI/admin/showAllCommodity',function(error, response, body){
+        if (!error && response.statusCode == 200) {
+            console.log("########## showAllCommodity 返回值 ##########");
+
+            res.json(body);
+        }
+    });
+})
+router.get('/showquehuo',function(req,res,next){
+    console.log("########## showquehuo Run ##########");
+
+    request.get('http://127.0.0.1/bishegogogo/CI/admin/showquehuo',function(error, response, body){
+        if (!error && response.statusCode == 200) {
+            console.log("########## showquehuo 返回值 ##########");
+            res.json(body);
             console.log(body);
         }
     });
 })
-// router.post('/deleteuser', function (req, res, next) {  
-//     var deleteid = req.body.deleteid;  
-//     console.log('deleteid:' + deleteid);  
-
-// });
 router.get('/deleteuser',function(req,res,next){
     var deleteid = req.query.deleteid;
     console.log("########## deleteuser Run ##########");
@@ -248,7 +265,7 @@ router.get('/deleteuser',function(req,res,next){
         if (!error && response.statusCode == 200) {
             res.json(body);
             console.log("########## 返回值 Run ##########");
-            console.log(body);
+            
         }
     });
 })
@@ -260,10 +277,23 @@ router.get('/deleteArticle',function(req,res,next){
         if (!error && response.statusCode == 200) {
             res.json(body);
             console.log("########## 返回值 Run ##########");
-            console.log(body);
+            
         }
     });
 })
+router.get('/deleteCommodity',function(req,res,next){
+    var commodityid = req.query.commodityid;
+    console.log("########## deleteCommodity Run ##########");
+    console.log(commodityid);
+    request.get('http://127.0.0.1/bishegogogo/CI/admin/deleteCommodity?commodityid='+commodityid,function(error, response, body){
+        if (!error && response.statusCode == 200) {
+            res.json(body);
+            console.log("########## deleteCommodity 返回值 ##########");
+            
+        }
+    });
+})
+
 router.get('/updataRecommend',function(req,res,next){
     var updataid = req.query.updataid;
     console.log("########## updataRecommend Run ##########");
@@ -272,8 +302,28 @@ router.get('/updataRecommend',function(req,res,next){
         if (!error && response.statusCode == 200) {
             res.json(body);
             console.log("########## 返回值 Run ##########");
-            console.log(body);
+            
         }
+    });
+})
+router.get('/insertCommodity',function(req,res,next){
+    var ccname = req.query.ccname;
+    var ccnum = req.query.ccnum;
+    var ccprice = req.query.ccprice;
+    var cccategory = req.query.cccategory;
+    var stock = req.query.stock;
+    console.log("########## insertCommondity Run ##########");
+    console.log("ccname:"+ccname);
+    console.log("ccnum:"+ccnum);
+    console.log("ccprice:"+ccprice);
+    console.log("cccategory:"+cccategory);
+    console.log("stock:"+stock);
+    request.post({url:'http://127.0.0.1/bishegogogo/CI/admin/insertCommodity',form:{ccname:ccname,ccnum:ccnum,ccprice:ccprice,cccategory:cccategory,stock:stock}},function(error,response,body){ 
+        if (!error && response.statusCode == 200) {
+            console.log("*****insertCommondity 返回值");
+            res.json(body);
+            
+        }    
     });
 })
 module.exports = router;

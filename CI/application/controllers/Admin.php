@@ -29,6 +29,16 @@ class Admin extends CI_Controller {
 		$result = $this->Admin_model->show_AllUserData();
 		echo json_encode($result);
 	}
+	public function showAllCommodity(){
+		$this->load->model('Admin_model');
+		$result = $this->Admin_model->show_AllCommodity();
+		echo json_encode($result);
+	}
+	public function showquehuo(){
+		$this->load->model('Admin_model');
+		$result = $this->Admin_model->show_quehuo();
+		echo json_encode($result);
+	}
 	public function deleteuser(){
 		$data=$this->input->get("deleteid");
 		$deleteid = explode(",", $data);
@@ -43,11 +53,28 @@ class Admin extends CI_Controller {
 		$result = $this->Admin_model->delete_Article($deleteid);
 		echo json_encode($result);
 	}
+	public function deleteCommodity(){
+		$commodityid=$this->input->get("commodityid");
+		$this->load->model('Admin_model');
+		$result = $this->Admin_model->delete_Commodity($commodityid);
+		echo json_encode($result);
+	}
 	public function updataRecommend(){
 		$data = $this->input->get("updataid");
 		$updataid = explode(",", $data);
 		$this->load->model('Admin_model');
 		$result = $this->Admin_model->updata_Recommend($updataid);
+		echo json_encode($result);
+	}
+	public function insertCommodity(){
+		$ccname = $this->input->post("ccname");
+		$ccnum = $this->input->post("ccnum");
+		$ccprice = $this->input->post("ccprice");
+		$cccategory = $this->input->post("cccategory");
+		$stock = $this->input->post("stock");
+
+		$this->load->model('Admin_model');
+		$result = $this->Admin_model->insert_Commodity($ccname,$ccnum,$ccprice,$cccategory,$stock);
 		echo json_encode($result);
 	}
 }

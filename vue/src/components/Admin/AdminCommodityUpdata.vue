@@ -6,23 +6,32 @@
 	<div class="flexjz commodity-content">
 		<div class="flexjz cc-style cc-name">
 				<div class="flexjz cc-style-text">商品名：</div>
-				<div class="flexjz cc-style-input"><div><input type="text" placeholder="请输入商品名（汉字）"></div></div>
+				<div class="flexjz cc-style-input"><div><input type="text" name="cc-input-name" placeholder="请输入商品名"></div></div>
 		</div>
 		<div class="flexjz cc-style cc-num">
 				<div class="flexjz cc-style-text">商品编号：</div>
-				<div class="flexjz cc-style-input"><div><input type="text" placeholder="请输入商品编号（六位数字）"></div></div>
+				<div class="flexjz cc-style-input"><div><input type="text" name="cc-input-num" placeholder="请输入商品编号（数字）" onkeyup="value=value.replace(/[^\d]/g,'')"></div></div>
 		</div>
 		<div class="flexjz cc-style cc-price">
-				<div class="flexjz cc-style-text">价格：</div>
-				<div class="flexjz cc-style-input"><div><input type="text" placeholder="请输入价格（数字）"></div></div>
+				<div class="flexjz cc-style-text">商品价格：</div>
+				<div class="flexjz cc-style-input"><div><input type="text" name="cc-input-price" placeholder="请输入价格（数字）" onkeyup="value=value.replace(/[^\d]/g,'')"></div></div>
 		</div>
 		<div class="flexjz cc-style cc-category">
-				<div class="flexjz cc-style-text">品类：</div>
-				<div class="flexjz cc-style-input"><div><input type="text" placeholder="请输入品类（汉字）"></div></div>
+				<div class="flexjz cc-style-text">商品品类：</div>
+				<div class="flexjz cc-style-input"><div><input type="text" name="cc-input-category" placeholder="请输入品类"></div></div>
+		</div>
+		<div class="flexjz cc-style cc-stock">
+				<div class="flexjz cc-style-text">库存：</div>
+				<div class="flexjz cc-style-input"><div><input type="text" name="cc-input-stock" placeholder="请输入库存（数字）" onkeyup="value=value.replace(/[^\d]/g,'')"></div></div>
 		</div>
 		<div class="flexjz cc-submit">
 			<div class="flexjz cc-submit-style cc-submit-commodityimg">商品图片</div>
-			<div class="flexjz cc-submit-style cc-submit-ok">提交</div>
+			<div class="flexjz cc-submit-style cc-submit-ok" @click="commoditySubmit">提交</div>
+		</div>
+		<div class="flexjz cc-style cc-news">
+			<div v-if="shownewsflag ==1"></div>
+			<div v-if="shownewsflag ==2">添加成功,即将跳转商品管理页面</div>
+			<div v-if="shownewsflag ==3">添加失败，请重试</div>
 		</div>
 	</div>
 
@@ -37,13 +46,42 @@
 		  	name: 'admin-commodity-page',
 			data () {
 				return {
+					shownewsflag:"1",
 				}
 			},
 			components:{
 				AdminHeader,
  			},
  			methods:{
- 				
+ 				commoditySubmit:function(){
+ 					var _this=this;
+ 					var ccname = $(":input[name=cc-input-name]").val();
+ 					var ccnum = $(":input[name=cc-input-num]").val();
+ 					var ccprice = $(":input[name=cc-input-price]").val();
+ 					var cccategory = $(":input[name=cc-input-category]").val();
+ 					var stock = $(":input[name=cc-input-stock]").val();0
+ 					Axios.get('http://localhost:3000/insertCommodity',{
+						params:{
+							ccname:ccname,
+							ccnum:ccnum,
+							ccprice:ccprice,
+							cccategory:cccategory,
+							stock:stock
+						}
+					}).then((res)=>{
+						var value=JSON.parse(res.data);
+						console.log(value);
+						if(value == true){
+							this.shownewsflag = 2;
+
+						}else if(value == false){
+							this.shownewsflag = 3;
+						}
+					});
+					var life = setTimeout(function(){
+						_this.$router.push({path:"/AdminCommodityPage"});
+					},2000);
+ 				}
  			},
 			mounted(){
 				this.$store.dispatch('changeTitle',['请填写商品信息','ddd','#66FF99']);
