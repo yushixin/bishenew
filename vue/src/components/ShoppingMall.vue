@@ -1,7 +1,8 @@
 <template>
-  <div id="PersonalCenter">
+  <div id="mall">
 	<common-header2></common-header2>
-	<personal-next></personal-next>
+	<div style="height:1rem;"></div>
+	<shopping-mall-next></shopping-mall-next>
 	<common-footer></common-footer>
   </div>
 </template>
@@ -10,19 +11,20 @@
   import Axios from "axios";
   import CommonHeader2 from './common/CommonHeader2'
   import CommonFooter from './common/CommonFooter'
-  import PersonalNext from './PersonalNext'
+  import ShoppingMallNext from './ShoppingMallNext'
+
 
 		export default {
 		  	name: 'PersonalCenter',
 			data () {
 				return {
-			  		title: '个人中心',
 				}
 			},
 			components:{
     			CommonHeader2,
     			CommonFooter,
-    			PersonalNext
+    			ShoppingMallNext
+
  			},
  			methods:{
 				youcan_or_yot_youcan_this_is_a_question:function(){
@@ -35,8 +37,10 @@
 				}
  			},
 			mounted(){
-				this.$store.dispatch('changeTitle',['个人中心','glyphicon glyphicon-triangle-left']);
+				this.$store.dispatch('changeTitle',['商城']);
+
 				this.youcan_or_yot_youcan_this_is_a_question();
+				// this.$store.dispatch('changeTitle',['movie']);
 			}
 		}
 </script>

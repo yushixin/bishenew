@@ -11,7 +11,7 @@
               </div>
           </router-link></li>
 
-          <li><router-link to="/">
+          <li><router-link to="/ShoppingMall">
               <div class="commonfooter-page-center commonfooter-style commonfooter-mall">
                 <div class="commonfooter-page-center commonfooter-style-next">
                     <div class="commonfooter-page-center commonfooter-style-next-icon"><div class="commonfooter-page-center"><span class="glyphicon glyphicon-folder-close"></span></div></div>
@@ -49,6 +49,7 @@ export default {
       var nowpath = this.$route.path;
       var index = "/index";
       var me = "/PersonalCenter";
+      var mall = "/ShoppingMall";
       if(nowpath == index){
           $(".commonfooter-index").addClass("xuanzhongcolor");
           $(".commonfooter-mall").removeClass("xuanzhongcolor");
@@ -58,6 +59,10 @@ export default {
           $(".commonfooter-index").removeClass("xuanzhongcolor");
           $(".commonfooter-mall").removeClass("xuanzhongcolor");
           $(".commonfooter-me").addClass("xuanzhongcolor");
+      }else if(nowpath == mall){
+          $(".commonfooter-index").removeClass("xuanzhongcolor");
+          $(".commonfooter-mall").addClass("xuanzhongcolor");
+          $(".commonfooter-me").removeClass("xuanzhongcolor");
       }
     }
 }

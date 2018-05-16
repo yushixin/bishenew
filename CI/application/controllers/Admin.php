@@ -65,7 +65,8 @@ class Admin extends CI_Controller {
 		$this->load->model('Admin_model');
 		$result = $this->Admin_model->updata_Recommend($updataid);
 		echo json_encode($result);
-	}
+	}	
+
 	public function insertCommodity(){
 		$ccname = $this->input->post("ccname");
 		$ccnum = $this->input->post("ccnum");
@@ -75,6 +76,23 @@ class Admin extends CI_Controller {
 
 		$this->load->model('Admin_model');
 		$result = $this->Admin_model->insert_Commodity($ccname,$ccnum,$ccprice,$cccategory,$stock);
+		echo json_encode($result);
+	}
+	public function updataCommodity(){
+		$updataid = $this->input->post("updataid");
+		$updataprice = $this->input->post("updataprice");
+		$updatastock = $this->input->post("updatastock");
+		$this->load->model('Admin_model');
+		$result = $this->Admin_model->updata_Commodity($updataid,$updataprice,$updatastock);
+		echo json_encode($result);
+	}
+	public function insertMessage(){
+		$message = $this->input->post("message");
+		$aim = $this->input->post("aim");
+		$t=time();
+		$nowtime = date("Y-m-d h:i:sa",$t);
+		$this->load->model('Admin_model');
+		$result = $this->Admin_model->insert_Message($message,$aim,$nowtime);
 		echo json_encode($result);
 	}
 }

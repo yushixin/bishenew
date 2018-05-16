@@ -46,6 +46,7 @@
 					</div>
 
 				</div>
+				<div style="height:6rem"></div>
 
 			</div>
 
@@ -176,7 +177,7 @@
 	}
 	.admin-article-page{
 		width: 1024px;
-		height: 1366px;	
+		/*height: 1366px;	*/
 		background: #222;
 		flex-direction: column;
 	}

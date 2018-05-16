@@ -16,7 +16,7 @@ class Article_model extends CI_Model {
                                                     );
 	  	$sql = $this->db->insert_string('article', $arr);
 	  	$query=$this->db->query($sql);
-	 	 return $query;
+	 	return $query;
     }
     public function show_container(){
         $sql = "SELECT * FROM article order by a_id desc";

@@ -52,17 +52,39 @@ class Admin_model extends CI_Model {
 		return $query2;
 	}
 	public function insert_Commodity($ccname,$ccnum,$ccprice,$cccategory,$stock){
-				$arr = array(
-					'commodity_id'    =>  null,
-					'commodity_name'  =>  $ccname,
-					'commodity_num'   =>  $ccnum,
-					'commodity_price'   =>  $ccprice,
-					'commodity_category'   =>  $cccategory,
-					'commodity_stock'   =>  $stock,
-				);
-				$sql = $this->db->insert_string('commodity', $arr);
-				$query=$this->db->query($sql);
-				return $query;
+		$arr = array(
+			'commodity_id'    =>  null,
+			'commodity_name'  =>  $ccname,
+			'commodity_num'   =>  $ccnum,
+			'commodity_price'   =>  $ccprice,
+			'commodity_category'   =>  $cccategory,
+			'commodity_stock'   =>  $stock,
+		);
+		$sql = $this->db->insert_string('commodity', $arr);
+		$query=$this->db->query($sql);
+		return $query;
 	}
+	public function updata_Commodity($updataid,$updataprice,$updatastock){
+
+		$sql = "UPDATE commodity SEt commodity_price = $updataprice , commodity_stock = $updatastock WHERE commodity_id = $updataid";
+		$query = $this->db->query($sql);
+		return $query;
+	}
+	public function insert_Message($message,$aim,$nowtime){
+      	$arr = array(  
+                    'message_id'      =>  null,
+					'message_aim'   =>  $aim,
+					'message_message' =>  $message,
+                    'message_time' =>  $nowtime
+                                                    );
+	  	$sql = $this->db->insert_string('newmessage', $arr);
+	  	$query=$this->db->query($sql);
+	 	return $query;
+	}
+	// public function insert_Message($message,$aim,$nowtime){		
+	// 	$sql = "INSERT INTO newmessage (message_id, message_message,message_aim,message_time) VALUES (null,$message,$aim,$nowtime)";
+	// 	$query = $this->db->query($sql);
+	// 	return $query;
+	// }
 
 }

@@ -31,12 +31,6 @@ class User extends CI_Controller {
 				echo $flag2;
 			}
 		}
-
-		// $result=$this->User_model->add_user($username,$password);
-		// $flag = 1;
-		// if($result == true){
-		// 	echo $flag;
-		// }
 	}
 	public function usernameTesting(){
 		$username=$this->input->get("username");

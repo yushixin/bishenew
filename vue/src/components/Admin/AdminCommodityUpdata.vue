@@ -25,7 +25,6 @@
 				<div class="flexjz cc-style-input"><div><input type="text" name="cc-input-stock" placeholder="请输入库存（数字）" onkeyup="value=value.replace(/[^\d]/g,'')"></div></div>
 		</div>
 		<div class="flexjz cc-submit">
-			<div class="flexjz cc-submit-style cc-submit-commodityimg">商品图片</div>
 			<div class="flexjz cc-submit-style cc-submit-ok" @click="commoditySubmit">提交</div>
 		</div>
 		<div class="flexjz cc-style cc-news">
@@ -59,7 +58,7 @@
  					var ccnum = $(":input[name=cc-input-num]").val();
  					var ccprice = $(":input[name=cc-input-price]").val();
  					var cccategory = $(":input[name=cc-input-category]").val();
- 					var stock = $(":input[name=cc-input-stock]").val();0
+ 					var stock = $(":input[name=cc-input-stock]").val();
  					Axios.get('http://localhost:3000/insertCommodity',{
 						params:{
 							ccname:ccname,
@@ -147,10 +146,9 @@
 	.cc-submit-style{
 		flex: 1;
 		height: 60%;
-		border:2px solid;
-		border-radius:50px;
-		background: #66FF99;
 
+
+		background: #66FF99;
 	}
 
 	

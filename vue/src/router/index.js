@@ -2,6 +2,8 @@ import Vue                      from 'vue'
 import Router                   from 'vue-router'
 import reg                      from '@/components/reg'
 import PersonalCenter           from '@/components/PersonalCenter'
+import ShoppingMall             from '@/components/ShoppingMall'
+import CommodityDetails         from '@/components/CommodityDetails'
 import login                    from '@/components/login'
 import index                    from '@/components/Index'
 import indexall                 from '@/components/index/indexall'
@@ -23,7 +25,8 @@ import adminlogin               from '@/components/Admin/adminlogin'
 import AdminArticlePage         from '@/components/Admin/AdminArticlePage'
 import AdminUserPage            from '@/components/Admin/AdminUserPage'
 import AdminCommodityPage       from '@/components/Admin/AdminCommodityPage'
-import AdminCommodityUpdata       from '@/components/Admin/AdminCommodityUpdata'
+import AdminCommodityUpdata     from '@/components/Admin/AdminCommodityUpdata'
+import AdminMessage             from '@/components/Admin/AdminMessage'
 
 
 
@@ -154,6 +157,21 @@ export default new Router({
       path : '/AdminCommodityUpdata',
       name : 'AdminCommodityUpdata',
       component: AdminCommodityUpdata
-    }
+    },
+    {
+      path: '/AdminMessage/:id',
+      name: 'AdminMessage',
+      component: AdminMessage
+    },
+    {
+      path: '/ShoppingMall',
+      name: 'ShoppingMall',
+      component: ShoppingMall
+    },
+    {
+      path: '/CommodityDetails/:id',
+      name: 'CommodityDetails',
+      component: CommodityDetails
+    },
   ]
 })

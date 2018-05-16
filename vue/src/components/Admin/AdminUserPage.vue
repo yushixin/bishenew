@@ -29,17 +29,20 @@
 					<div class="flexjz aupcdcn-name flex1">{{userdatas.u_name}}</div>
 					<div class="flexjz aupcdcn-age flex1">{{userdatas.u_age}}</div>
 					<div class="flexjz aupcdcn-gender flex1">{{userdatas.u_gender}}</div>
-					<div class="flexjz aupcdcn-message flex05" @click="sendMessage(index)"><span class="glyphicon glyphicon-send"></span></div>
+					<div class="flexjz aupcdcn-message flex05" @click="openMessageBox(index)"><span class="glyphicon glyphicon-send"></span></div>
 				</div>
 			</div>
 		</div>
+		<div style="height:6rem"></div>
 	</div>
-	<div class="flexjz admin-user-page-message" v-if="flag==2">
+	<div class="flexjz admin-user-page-message" v-if="messageflag==2"><!-- messageflag 等于2 的时候 显示  -->
 		<div class="flexjz message">
-			<div class="flex1 message-close"><div class="flexjz" @click="closemessage"><span class="flexjz glyphicon glyphicon-menu-left"></span></div></div>
-			<div class="flexjz flex1 message-showaim"><div class="flexjz flex05" >to:</div><p class="flexjz flex1">{{aimusername}}</p><div class=" flexjz flex2" ></div></div>
-			<div class="flexjz flex1 message-input"><input type="text"></div>
-			<div class="flexjz flex1 message-submit"><div class="flexjz">提交</div></div>
+			<div class="flex1 message-close"><div class="flexjz" @click="closeMessageBox"><span class="flexjz glyphicon glyphicon-menu-left"></span></div></div>
+
+			<div class="flexjz flex1 message-showaim" v-if="messageflag2==3"><div class="flexjz flex05" >to:</div><p class="flexjz flex1">{{aimusername}}</p><div class=" flexjz flex2" ></div></div>
+			<div class="flexjz flex1 message-input" v-if="messageflag2==3"><input type="text" name="message" placeholder="请输入信息"></div>
+			<div class="flexjz flex1 message-submit" v-if="messageflag2==3"><div class="flexjz" @click="messageSubmit">提交</div></div>
+			<div class="flexjz flex3 message-ojbk" v-if="messageflag2==4">OJBK</div>
 		</div>
 	</div>
   </div>
@@ -56,7 +59,8 @@
 					userdata:[],
 					aim:"",
 					aimusername:"",
-					flag:"1"
+					messageflag:"1",
+					messageflag2:"3"
 				}
 			},
 			components:{
@@ -86,30 +90,46 @@
  							arr.push(this.userdata[i].u_id);
  						}
  					}
-			        Axios.get('http://localhost:3000/deleteuser',{//showInformation 输出信息
-			          params:{
-			            deleteid:arr
-			          }
-			        }).then((res)=>{
-			            // console.log(res.data);
-			          var value=JSON.parse(res.data);
-			          if(value==true){
-			          	location.reload();
-			          }
-			        });
+					Axios.get('http://localhost:3000/deleteuser',{//showInformation 输出信息
+						params:{
+							deleteid:arr
+						}
+					}).then((res)=>{
+						var value=JSON.parse(res.data);
+						if(value==true){
+							location.reload();
+						}
+					});
  				},	
-				sendMessage:function(index){
+				openMessageBox:function(index){
 					console.log(this.userdata[index].u_id);
 					this.aim=this.userdata[index].u_id;
 					this.aimusername=this.userdata[index].u_name;
 					console.log(this.aim);
 					console.log(this.aimusername);
-					this.flag = 2;
+					this.messageflag = 2;
 				},
-				closemessage:function(){
+				closeMessageBox:function(){
 					this.aim = "";
 					this.aimusername ="";
-					this.flag = 1;
+					this.messageflag2 = 3;
+					this.messageflag = 1;
+				},
+				messageSubmit:function(){
+					var _this=this;
+					var message = $(":input[name=message]").val();
+					var a = parseInt(this.aim)
+					Axios.get('http://localhost:3000/insertMessage',{//showInformation 输出信息
+						params:{
+							message:message,
+							aim:a,
+						}
+					}).then((res)=>{
+						var value=JSON.parse(res.data);
+						if(value == true){
+							this.messageflag2 = 4;
+						}
+					});
 				}
  			},
 			mounted(){
@@ -124,6 +144,11 @@
 p{
 	margin:0;
 }
+	a{
+		text-decoration:none;
+		out-line:none;
+		color: #fff;
+	}
 	.flexjz{
 		display: flex;
 		justify-content: center;
@@ -136,9 +161,12 @@ p{
 		flex:0.5;
 
 	}
+	.flex3{
+		flex: 3;
+	}
 	.admin-user-page{
 		width: 1024px;	
-		height: 1366px;	
+		/*height: 1366px;*/
 		background: #222;
 		flex-direction: column;
 	}
@@ -263,19 +291,19 @@ p{
 	.admin-user-page-message{
 		position: fixed;
 		top: 0.7rem;
-		background: #222;
+		background: rgba(34, 34, 34, 0.7);
 		color: #fff;
 		width: 100%;
 		height: 8rem;
 		padding-left: 1rem;
 		padding-right: 1rem;
-		opacity:0.9;
 	}
 	.message{
 		height: 3rem;
 		width: 100%;
 		flex-direction: column;
 		font-size: 0.4rem;
+
 	}
 	.message-close{
 		display: flex;
@@ -319,6 +347,13 @@ p{
 		width: 100%;
 		background: #66FFFF;
 		color: #000;
+	}
+	.message-ojbk{
+		width: 90%;
+		font-size: 1rem;
+		color:#000;
+		background: #66FFFF;
+
 	}
 
 </style>
