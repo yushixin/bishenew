@@ -34,6 +34,11 @@ class Article extends CI_Controller {
 		$result = $this->Article_model->show_containertop();
 		echo json_encode($result);
 	}
+	public function showcontainertuijian(){
+		$this->load->model('Article_model');
+		$result = $this->Article_model->show_containertuijian();
+		echo json_encode($result);
+	}
 	public function showArticleData(){
 		$aid = $this->input->get("aid");
 		$this->load->model('Article_model');

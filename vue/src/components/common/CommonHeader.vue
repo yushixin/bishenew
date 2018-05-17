@@ -15,9 +15,14 @@
                   热门
                   <span class="caret"></span>
                 </button>
+                <button class="button-tuijian displaynone btn btn-default dropdown-toggle header_1_middle-button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  推荐
+                  <span class="caret"></span>
+                </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                   <li @click="toindexall"><router-link to="/index/indexall">全部</router-link></li>
                   <li @click="toindextop"><router-link to="/index/indextop">热门</router-link></li>
+                  <li @click="toindextuijian"><router-link to="/index/indexadmin">推荐</router-link></li>
                 </ul>
             </div>
         </div>
@@ -68,11 +73,19 @@ export default {
       toindexall:function(){
         $(".button-all").removeClass("displaynone");
         $(".button-top").addClass("displaynone");
-
+        $(".button-tuijian").addClass("displaynone");
       },
       toindextop:function(){
         $(".button-top").removeClass("displaynone");
         $(".button-all").addClass("displaynone");
+        $(".button-tuijian").addClass("displaynone");
+
+      },
+      toindextuijian:function(){
+        $(".button-top").addClass("displaynone");
+        $(".button-all").addClass("displaynone");
+        $(".button-tuijian").removeClass("displaynone");
+
       },
       door:function(){
           this.$router.push({path:"/adminlogin"});

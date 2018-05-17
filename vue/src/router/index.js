@@ -4,10 +4,13 @@ import reg                      from '@/components/reg'
 import PersonalCenter           from '@/components/PersonalCenter'
 import ShoppingMall             from '@/components/ShoppingMall'
 import CommodityDetails         from '@/components/CommodityDetails'
+import ShoppingCart             from '@/components/ShoppingCart'
 import login                    from '@/components/login'
 import index                    from '@/components/Index'
 import indexall                 from '@/components/index/indexall'
 import indextop                 from '@/components/index/indextop'
+import indexadmin                 from '@/components/index/indexadmin'
+
 import search                   from '@/components/search'
 import WillDie                  from '@/components/WaitPage/WillDie'
 import WillDie2                 from '@/components/WaitPage/WillDie2'
@@ -44,7 +47,9 @@ export default new Router({
       component: index,
       children: [
         { path: "/index/indexall", component: indexall },
-        { path: "/index/indextop", component: indextop }
+        { path: "/index/indextop", component: indextop },
+        { path: "/index/indexadmin", component: indexadmin },
+
 
       ]
     },
@@ -173,5 +178,10 @@ export default new Router({
       name: 'CommodityDetails',
       component: CommodityDetails
     },
+    {
+      path: '/ShoppingCart',
+      name: 'ShoppingCart',
+      component: ShoppingCart
+    }
   ]
 })

@@ -12,10 +12,17 @@ header('Access-Control-Allow-Credentials:true');
 // session_start(); 
 class Commodity extends CI_Controller {
 	public function showOneCommodity(){
-        $commodityid=$this->input->post("commodityid");
+		$commodityid=$this->input->post("commodityid");
 		$this->load->model('Commodity_model');
 		$result=$this->Commodity_model->show_OneCommodity($commodityid);
 		echo json_encode($result);
+	}
+	public function insertShoppingCart(){
+		$commodityid=$this->input->post("commodityid");
+		$buynumber=$this->input->post("buynumber");
+		$nowUserid=$this->input->post("nowUserid");
+		$this->load->model('Commodity_model');
+		$result=$this->Commodity_model->insert_ShoppingCart($commodityid,$buynumber,$nowUserid);
+		echo json_encode($result);
 	}	
-
 }

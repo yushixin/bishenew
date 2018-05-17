@@ -37,7 +37,17 @@
                 </div>
 
             </div>
-       </div>
+        </div>
+        <div class="displayflex PersonalMallfunction"><!-- 个人页面商城相关功能div -->
+          <div class="displayflex flex1 PMfunction Pmfunction-order" @click="toOrder">
+            <div class="displayflex icon"><span class="glyphicon glyphicon-stats"></span></div>
+            <div class="displayflex text">订单</div>
+          </div>
+          <div class="displayflex flex1 PMfunction PMfunction-shoppingcart" @click="toShoppingCart">
+            <div class="displayflex flex1 icon"><span class="glyphicon glyphicon-shopping-cart"></span></div>
+            <div class="flex1 text">购物车</div>
+          </div>
+        </div>
     </div>
   </div>
 </template>
@@ -85,6 +95,12 @@ export default {
           this.$router.push({path:"/willvue2"});
         });
         
+      },
+      toOrder:function(){
+        console.log("toOrder function RUN");
+      },
+      toShoppingCart:function(){
+          this.$router.push({path:"/ShoppingCart"});
       }
     },
     mounted() {
@@ -327,5 +343,48 @@ export default {
     .cat-list-select-delete{
       background: #3299cc;
     }
+    /*2018 - 05 - 17*/
+    .displayflex{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .flex1{
+      flex: 1;
+    }
+    .PersonalMallfunction{
+      position: fixed;
+      top: 9.3rem;
+      height: 1rem;
+      width: 100%;
+      font-size: 0.4rem;
+      flex-direction: row;
+    }
+    .PMfunction{
+      padding: 10px;
+      color: #fff;
+      width: 70%;
+      height: 70%;
+      border:2px solid;
+      border-radius:50px;
+      background:#66CCFF;
+
+    }
+    .Pmfunction-order{
+    }
+    .PMfunction-shoppingcart{
+    }
+    .icon{
+      width: 100%;
+      height: 100%;
+    }
+    .text{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+    
+
 
 </style>

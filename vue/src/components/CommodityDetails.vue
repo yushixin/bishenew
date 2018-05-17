@@ -25,8 +25,29 @@
                       <div class="flex1 information-other-next-next_right">{{data.commodity_category}}</div>
                   </div>
               </div>
-              <div class="flexJZ flex1 information-submit">添加至购物车</div>
+              <div class="flexJZ flex1 information-submit" @click="insertShoppingCart" v-if="flag == 0">添加至购物车</div>
+              <div class="flexJZ select-buy-number"  v-if="flag == 1">
+                <div class="flexJZ flex1 select-buy-number_left">
+                    <div class="flexJZ flex1 select-buy-number-reduce"><span class="glyphicon glyphicon-menu-left"></span></div>
+                    <div class="flexJZ flex2 select-buy-number-input"><input type="text" name="buynumber" onkeyup="value=value.replace(/[^\d]/g,'')"></div>
+                    <div class="flexJZ flex1 select-buy-number-plus"><span class="glyphicon glyphicon-menu-right"></span></div>
+                </div>
+                <div class="flexJZ flex1 select-buy-number_right" @click="selectwanle">确定</div>
+              </div>
           </div>
+          <div  class="flexJZ select-buy-number-Prompt" v-if="showPromptFlag2 == 1">想要多少</div>
+          <div  class="flexJZ select-buy-number-Prompt" v-if="showPromptFlag2 == 2">到底买不买</div>
+          <div  class="flexJZ select-buy-number-Prompt" v-if="showPromptFlag2 == 3">没货了</div>
+          <div  class="flexJZ select-buy-number-Prompt" v-if="showPromptFlag2 == 4">没那么多啊</div>
+      <div class="flexJZ commodity-detais-mask" v-if="msakflag == 1">
+          <div class="flexJZ mask">
+              <div class="flexJZ flex1 mask-up"><b>where are you going?</b></div>
+              <div class="flexJZ flex1 mask-down">
+                  <div class="flexJZ flex1 mask-down_tomall"><div class="flexJZ" @click="tomall">继续看看？</div></div>
+                  <div class="flexJZ flex1 mask-down_toshaoppingcart"><div class="flexJZ" @click="toshaopingcart">去购物车？</div></div>
+              </div>
+          </div>
+      </div>
       </div>
       <div style="height:1rem;"></div><!-- 空div 用来占位 -->
   </div>
@@ -40,6 +61,12 @@ export default {
   data() {
     return {
         data:[],
+        commodityid:"",
+        nowUserid:"",
+        flag:"0",
+        showPromptFlag2:"0",
+        msakflag:"0",
+        buynumber:""
     }
   },
   components:{
@@ -48,25 +75,67 @@ export default {
   methods:{
       youcan_or_yot_youcan_this_is_a_question:function(){
         var nowUserid = sessionStorage.getItem("u_id");//在页面加载的时候获取当前有效sessionsStotage
+        this.nowUserid = nowUserid;
         if(nowUserid){
-          console.log("youcan_or_yot_youcan_this_is_a_question函数 当前用户id："+ nowUserid);
+          console.log("youcan_or_yot_youcan_this_is_a_question函数 this.nowUserid:"+ this.nowUserid);
           this.nowuserid = nowUserid;
-
         }else if(nowUserid == null){
           this.$router.push({path:"/WillDie"});
         }
       },
       getData:function(){
-        var commodityid=this.$route.params.id;
-        console.log("commodityid:"+commodityid);
+        this.commodityid=this.$route.params.id;
         Axios.get('http://localhost:3000/showOneCommodity',{
           params:{
-            commodityid:commodityid
+            commodityid:this.commodityid,
           }
         }).then((res)=>{
           this.data = JSON.parse(res.data);
           console.log(this.data);
         });
+      },
+      insertShoppingCart:function(){
+          if(this.data.commodity_stock==0){
+            this.showPromptFlag2=3;
+          }else{
+            this.flag=1;
+            this.showPromptFlag2=1;
+          }
+      },
+      selectwanle:function(){
+        var buynumber = $("input[name=buynumber]").val();
+        if(buynumber.length > 0){
+            if(buynumber > this.data.commodity_stock){
+              this.showPromptFlag2 = 4;
+            }else{
+                console.log("buynumber:"+buynumber);
+                console.log("this.commodityid:"+this.commodityid);
+                console.log("this.nowUserid:"+this.nowUserid);
+                Axios.get('http://localhost:3000/insertShoppingCart',{
+                  params:{
+                    buynumber:buynumber,
+                    commodityid:this.commodityid,
+                    nowUserid:this.nowUserid
+                  }
+                }).then((res)=>{
+                  this.data = JSON.parse(res.data);
+                  if(this.data == true){
+                      this.msakflag =1;
+                  }
+                });
+            }
+
+        }else if(buynumber.length <= 0){
+          this.showPromptFlag2 = 2;
+        }
+
+      },
+      tomall:function(){
+          this.$router.push({path:"/ShoppingMall"});
+
+      },
+      toshaopingcart:function(){
+          this.$router.push({path:"/ShoppingCart"});
 
       }
   },
@@ -80,6 +149,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  input:focus { outline: none; } 
+
   .flexJZ{
     display: flex;
     justify-content: center;
@@ -88,8 +159,11 @@ export default {
   .flex1{
     flex: 1;
   }
+    .flex2{
+    flex: 2;
+  }
   .flex05{
-    flex: 0.5;
+    flex: 0.6;
   }
   .commodity-content{
     width: 100%;
@@ -105,8 +179,6 @@ export default {
   .commodity-content-information{
     width: 100%;
     height: 3rem;
-    padding-left: 10px;
-    padding-right: 10px;
     flex-direction: column;
   }
   .information-name{
@@ -157,5 +229,97 @@ export default {
     font-size: 0.5rem;
     background: #3366FF;
     color: #fff;
+  }
+  /*2018 - 05 - 17*/
+  .select-buy-number{
+    width: 100%;
+    height: 1rem;
+    font-size: 0.4rem;
+    flex-direction: row;
+  }
+  .select-buy-number_left{
+    height: 100%;
+  }
+  .select-buy-number-reduce{
+    height: 100%;
+    
+  }  
+  .select-buy-number-input{
+    height: 100%;
+    
+  }
+ .select-buy-number-input input{
+    width: 80%;
+    height: 80%;
+    padding: 5px;
+  }  
+  .select-buy-number-plus{
+    height: 100%;
+  }
+  .select-buy-number_right{
+    height: 100%;
+    font-size: 0.5rem;
+    background: #3366FF;
+    color: #fff;
+  }
+  .select-buy-number-Prompt{
+    font-size: 0.5rem;
+    height: 1rem;
+    width: 100%;
+    color: #000;
+  }
+  .mailejige{
+    font-size: 0.5rem;
+    height: 1rem;
+    width: 100%;
+    color: #000;
+  }
+  .commodity-detais-mask{
+    position: fixed;
+    top:1rem;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+
+    /*background: red;*/
+
+  }
+  .mask{
+    width: 100% ;
+    height: 3rem;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    -o-flex-direction: column;
+    flex-direction: column;
+  }
+  .mask-up{
+    width: 100% ;
+    font-size: 0.5rem;
+  }
+  .mask-down{
+    width: 100%;
+    flex-direction: row;
+  }
+  .mask-down_tomall{
+    height: 100%;
+  }
+  .mask-down_toshaoppingcart{
+    height: 100%;
+
+  }
+  .mask-down_tomall div{
+    width: 70%;
+    height: 50%;
+    font-size: 0.4rem;
+    background: #66FFFF;
+    border-radius:25px;
+  }
+  .mask-down_toshaoppingcart div{
+    width: 70%;
+    height: 50%;
+    font-size: 0.4rem;
+    background: #66FFFF;
+    border-radius:25px;
   }
 </style>

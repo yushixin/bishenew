@@ -139,12 +139,12 @@ import Axios from "axios";
   }
   .row-rightright{
     width: 3px;
-    height: 100%;
+    height: 1.5rem;
     background: #FF0033;
   }
   .row-rightright2{
     width: 3px;
-    height: 100%;
+    height: 1.5rem;
     background: #66FF99;
   }
 </style>

@@ -95,7 +95,6 @@ router.get('/showcontainer',function(req,res,next){
     request.get('http://127.0.0.1/bishegogogo/CI/article/showcontainer',function(error, response, body){
         if (!error && response.statusCode == 200) {
             res.json(body);
-            
         }
     });
 })
@@ -103,11 +102,16 @@ router.get('/showcontainertop',function(req,res,next){
     request.get('http://127.0.0.1/bishegogogo/CI/article/showcontainertop',function(error, response, body){
         if (!error && response.statusCode == 200) {
             res.json(body);
-            
         }
     });
 })
-
+router.get('/showcontainertuijian',function(req,res,next){
+    request.get('http://127.0.0.1/bishegogogo/CI/article/showcontainertuijian',function(error, response, body){
+        if (!error && response.statusCode == 200) {
+            res.json(body);
+        }
+    });
+})
 router.get('/showArticleData',function(req,res,next){
     var aid = req.query.aid;
     request.get('http://127.0.0.1/bishegogogo/CI/article/showArticleData?aid='+aid,function(error,response,body){
@@ -214,7 +218,21 @@ router.get('/showOneCommodity',function(req,res,next){
         }
     });
 })
-
+router.get('/insertShoppingCart',function(req,res,next){
+    console.log("########## insertShoppingCart Run ##########");
+    var commodityid = req.query.commodityid;
+    var buynumber = req.query.buynumber;
+    var nowUserid = req.query.nowUserid;
+    console.log("commodityid: "+commodityid);
+    console.log("buynumber: "+buynumber);
+    console.log("nowUserid: "+nowUserid);
+    request.post({url:'http://127.0.0.1/bishegogogo/CI/Commodity/insertShoppingCart',form:{commodityid:commodityid,buynumber:buynumber,nowUserid:nowUserid}},function(error,response,body){ 
+        if (!error && response.statusCode == 200) {
+            console.log("*****insertShoppingCart 返回值");
+            res.json(body);
+        }
+    });
+})
 
 
 
