@@ -28,9 +28,9 @@
               <div class="flexJZ flex1 information-submit" @click="insertShoppingCart" v-if="flag == 0">添加至购物车</div>
               <div class="flexJZ select-buy-number"  v-if="flag == 1">
                 <div class="flexJZ flex1 select-buy-number_left">
-                    <div class="flexJZ flex1 select-buy-number-reduce"><span class="glyphicon glyphicon-menu-left"></span></div>
-                    <div class="flexJZ flex2 select-buy-number-input"><input type="text" name="buynumber" onkeyup="value=value.replace(/[^\d]/g,'')"></div>
-                    <div class="flexJZ flex1 select-buy-number-plus"><span class="glyphicon glyphicon-menu-right"></span></div>
+                    <div class="flexJZ flex1 select-buy-number-reduce" @click="reduce"><span class="glyphicon glyphicon-menu-left"></span></div>
+                    <div class="flexJZ flex2 select-buy-number-input"><input type="text" name="buynumber" onkeyup="value=value.replace(/[^\d]/g,'')" v-model="buynumber"></div>
+                    <div class="flexJZ flex1 select-buy-number-plus" @click="plus"><span class="glyphicon glyphicon-menu-right"></span></div>
                 </div>
                 <div class="flexJZ flex1 select-buy-number_right" @click="selectwanle">确定</div>
               </div>
@@ -66,7 +66,8 @@ export default {
         flag:"0",
         showPromptFlag2:"0",
         msakflag:"0",
-        buynumber:""
+        // number:0,
+        buynumber:0,
     }
   },
   components:{
@@ -93,6 +94,7 @@ export default {
           this.data = JSON.parse(res.data);
           console.log(this.data);
         });
+
       },
       insertShoppingCart:function(){
           if(this.data.commodity_stock==0){
@@ -103,29 +105,59 @@ export default {
           }
       },
       selectwanle:function(){
-        var buynumber = $("input[name=buynumber]").val();
-        if(buynumber.length > 0){
-            if(buynumber > this.data.commodity_stock){
+        // this.buynumber = $("input[name=buynumber]").val();
+              console.log(this.buynumber);
+
+        if(this.buynumber > 0){
+            if(this.buynumber > this.data.commodity_stock){
+              console.log(this.buynumber);
+              console.log(this.data.commodity_stock);
+
+              console.log(this.buynumber > this.data.commodity_stock);
               this.showPromptFlag2 = 4;
             }else{
-                console.log("buynumber:"+buynumber);
-                console.log("this.commodityid:"+this.commodityid);
-                console.log("this.nowUserid:"+this.nowUserid);
-                Axios.get('http://localhost:3000/insertShoppingCart',{
+                Axios.get('http://localhost:3000/selecthaveornot',{
                   params:{
-                    buynumber:buynumber,
                     commodityid:this.commodityid,
-                    nowUserid:this.nowUserid
+                    nowUserid:this.nowUserid,
                   }
                 }).then((res)=>{
-                  this.data = JSON.parse(res.data);
-                  if(this.data == true){
-                      this.msakflag =1;
+                  var value = JSON.parse(res.data);
+                  // console.log(data.length);
+                  if(value.length >= 1){
+                       Axios.get('http://localhost:3000/updataShoppingCart',{
+                        params:{
+                          buynumber:this.buynumber,
+                          commodityid:this.data.commodity_id,
+                        }
+                      }).then((res)=>{
+                        this.data = JSON.parse(res.data);
+                        if(this.data == true){
+                            this.msakflag =1;
+                        }
+                      });
+                  }else if(value.length == 0){
+                      console.log("buynumber:"+this.buynumber);
+                      console.log("this.commodityid:"+this.commodityid);
+                      console.log("this.nowUserid:"+this.nowUserid);
+                      Axios.get('http://localhost:3000/insertShoppingCart',{
+                        params:{
+                          buynumber:this.buynumber,
+                          commodityid:this.commodityid,
+                          nowUserid:this.nowUserid,
+                          commodityname:this.data.commodity_name,
+                          price:this.data.commodity_price,
+                        }
+                      }).then((res)=>{
+                        this.data = JSON.parse(res.data);
+                        if(this.data == true){
+                            this.msakflag =1;
+                        }
+                      });
                   }
                 });
             }
-
-        }else if(buynumber.length <= 0){
+        }else if(this.buynumber <= 0){
           this.showPromptFlag2 = 2;
         }
 
@@ -137,6 +169,22 @@ export default {
       toshaopingcart:function(){
           this.$router.push({path:"/ShoppingCart"});
 
+      },
+      reduce:function(){
+        if(this.buynumber == 0){
+
+        }else if (this.buynumber > 0){
+          this.buynumber -= 1;
+        }
+        
+      },
+      plus:function(){
+        if(this.buynumber >= this.data.commodity_stock){
+
+        }else if (this.buynumber < this.data.commodity_stock){
+          this.buynumber += 1;
+        }
+        
       }
   },
   mounted() {

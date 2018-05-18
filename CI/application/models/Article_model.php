@@ -30,7 +30,7 @@ class Article_model extends CI_Model {
         return $query->result();
     }
     public function show_containertuijian(){
-        $sql = "SELECT * FROM article where a_articlepush = 0";
+        $sql = "SELECT * FROM article where a_articlepush = 0   ";
         $query=$this->db->query($sql);
         return $query->result();
     }

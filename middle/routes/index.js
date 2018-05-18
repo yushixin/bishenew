@@ -223,10 +223,14 @@ router.get('/insertShoppingCart',function(req,res,next){
     var commodityid = req.query.commodityid;
     var buynumber = req.query.buynumber;
     var nowUserid = req.query.nowUserid;
+    var commodityname = req.query.commodityname;
+    var price = req.query.price;
     console.log("commodityid: "+commodityid);
     console.log("buynumber: "+buynumber);
     console.log("nowUserid: "+nowUserid);
-    request.post({url:'http://127.0.0.1/bishegogogo/CI/Commodity/insertShoppingCart',form:{commodityid:commodityid,buynumber:buynumber,nowUserid:nowUserid}},function(error,response,body){ 
+    console.log("commodityname: "+commodityname);
+    console.log("price: "+price);
+    request.post({url:'http://127.0.0.1/bishegogogo/CI/Commodity/insertShoppingCart',form:{commodityid:commodityid,buynumber:buynumber,nowUserid:nowUserid,commodityname:commodityname,price:price}},function(error,response,body){ 
         if (!error && response.statusCode == 200) {
             console.log("*****insertShoppingCart 返回值");
             res.json(body);
@@ -234,8 +238,86 @@ router.get('/insertShoppingCart',function(req,res,next){
     });
 })
 
+router.get('/ShoppingCart',function(req,res,next){
+    console.log("########## ShoppingCart Run ##########");
+    var nowUserid = req.query.nowUserid;
+    console.log("nowUserid: "+nowUserid);
+    request.post({url:'http://127.0.0.1/bishegogogo/CI/Commodity/ShoppingCart',form:{nowUserid:nowUserid}},function(error,response,body){ 
+        if (!error && response.statusCode == 200) {
+            console.log("*****ShoppingCart 返回值");
+            res.json(body);
+        }
+    });
+})
 
+router.get('/shoppdingcartDelete',function(req,res,next){
+    console.log("########## shoppdingcartDelete Run ##########");
+    var aimid = req.query.aimid;
+    console.log("aimid: "+aimid);
+    request.post({url:'http://127.0.0.1/bishegogogo/CI/Commodity/shoppdingcartDelete',form:{aimid:aimid}},function(error,response,body){ 
+        if (!error && response.statusCode == 200) {
+            console.log("*****shoppdingcartDelete 返回值");
+            res.json(body);
+        }
+    });
+})
 
+router.get('/selecthaveornot',function(req,res,next){
+    console.log("########## selecthaveornot Run ##########");
+    var nowUserid = req.query.nowUserid;
+    console.log("nowUserid: "+nowUserid);   
+    var commodityid = req.query.commodityid;
+    console.log("commodityid: "+commodityid);
+    request.post({url:'http://127.0.0.1/bishegogogo/CI/Commodity/selecthaveornot',form:{nowUserid:nowUserid,commodityid:commodityid}},function(error,response,body){ 
+        if (!error && response.statusCode == 200) {
+            console.log("*****selecthaveornot 返回值");
+            res.json(body);
+        }
+    });
+})
+router.get('/updataShoppingCart',function(req,res,next){
+    console.log("########## updataShoppingCart Run ##########");
+    var buynumber = req.query.buynumber;
+    console.log("buynumber: "+buynumber);    
+    var commodityid = req.query.commodityid;
+    console.log("commodityid: "+commodityid);
+    request.post({url:'http://127.0.0.1/bishegogogo/CI/Commodity/updataShoppingCart',form:{commodityid:commodityid,buynumber:buynumber}},function(error,response,body){ 
+        if (!error && response.statusCode == 200) {
+            console.log("*****updataShoppingCart 返回值");
+            res.json(body);
+        }
+    });
+})
+
+router.get('/submitorder',function(req,res,next){
+    console.log("########## submitorder Run ##########");
+    var orderuid = req.query.orderuid;
+    var ordersubmitter = req.query.ordersubmitter;
+    var list = req.query.list;
+    console.log("orderuid: "+orderuid);
+    console.log("ordersubmitter: "+ordersubmitter);
+    console.log("list: "+list);
+
+    request.post({url:'http://127.0.0.1/bishegogogo/CI/Commodity/submitorder',form:{orderuid:orderuid,ordersubmitter:ordersubmitter,list:list}},function(error,response,body){ 
+        if (!error && response.statusCode == 200) {
+            console.log("*****submitorder 返回值");
+            res.json(body);
+            console.log(body);
+        }
+    });
+})
+router.get('/submitorderOKdelete',function(req,res,next){
+    var aimidarr = req.query.aimidarr;
+    console.log("########## submitorderOKdelete Run ##########");
+    console.log(aimidarr);
+    request.get('http://127.0.0.1/bishegogogo/CI/Commodity/submitorderOKdelete?aimidarr='+aimidarr,function(error, response, body){
+        if (!error && response.statusCode == 200) {
+            res.json(body);
+            console.log("########## 返回值 submitorderOKdelete ##########");
+            
+        }
+    });
+})
 // 管理员部分
 // 
 router.get('/adminlogin',function(req,res,next){
@@ -248,6 +330,7 @@ router.get('/adminlogin',function(req,res,next){
         if (!error && response.statusCode == 200) {
             console.log("*****adminlogin 返回值");
             res.json(body);
+
             
 
         }

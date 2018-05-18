@@ -84,7 +84,7 @@
  				},
  				deleteall:function(){
  					var checkBoxArr  = $(":input[name=fxk]");
- 					var arr = new Array()
+ 					var arr = new Array();
  					for (var i = 0 ; i < checkBoxArr.length ; i++) {
  						if(checkBoxArr[i].checked == true){
  							arr.push(this.userdata[i].u_id);
