@@ -22,6 +22,16 @@ class Admin_model extends CI_Model {
 		$query=$this->db->query($sql);
 		return $query->result();
 	}
+	public function show_AllOrder(){
+		$sql = "SELECT * FROM `order`";
+		$query=$this->db->query($sql);
+		return $query->result();
+	}
+	public function show_noReview(){
+		$sql = "SELECT * FROM `order` where order_flag = 0 ";
+		$query=$this->db->query($sql);
+		return $query->result();
+	}
 	public function show_quehuo(){
 		$sql = "SELECT * FROM commodity where commodity_stock = 0";
 		$query=$this->db->query($sql);

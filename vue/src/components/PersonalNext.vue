@@ -97,7 +97,7 @@ export default {
         
       },
       toOrder:function(){
-        console.log("toOrder function RUN");
+          this.$router.push({path:"/order"});
       },
       toShoppingCart:function(){
           this.$router.push({path:"/ShoppingCart"});

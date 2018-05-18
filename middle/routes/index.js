@@ -203,7 +203,19 @@ router.get('/indexsearch',function(req,res,next){
         }
     });
 })
+router.get('/showMessage',function(req,res,next){
+    console.log("########## showMessage Run ##########");
+    var nowuserid = req.query.nowuserid;
+    console.log("nowuserid: "+nowuserid);
+    request.post({url:'http://127.0.0.1/bishegogogo/CI/User/showMessage',form:{nowuserid:nowuserid}},function(error,response,body){
+        if (!error && response.statusCode == 200) {
+            console.log("*****showMessage 返回值");
+            res.json(body);
 
+
+        }
+    });
+})
 // 商品相关
 router.get('/showOneCommodity',function(req,res,next){
     console.log("########## showOneCommodity Run ##########");
@@ -358,6 +370,26 @@ router.get('/showAllCommodity',function(req,res,next){
         if (!error && response.statusCode == 200) {
             console.log("########## showAllCommodity 返回值 ##########");
 
+            res.json(body);
+        }
+    });
+})
+router.get('/showAllOrder',function(req,res,next){
+    console.log("########## showAllOrder Run ##########");
+
+    request.get('http://127.0.0.1/bishegogogo/CI/admin/showAllOrder',function(error, response, body){
+        if (!error && response.statusCode == 200) {
+            console.log("########## showAllOrder 返回值 ##########");
+            res.json(body);
+        }
+    });
+})
+router.get('/shownoReview',function(req,res,next){
+    console.log("########## shownoReview Run ##########");
+
+    request.get('http://127.0.0.1/bishegogogo/CI/admin/shownoReview',function(error, response, body){
+        if (!error && response.statusCode == 200) {
+            console.log("########## shownoReview 返回值 ##########");
             res.json(body);
         }
     });

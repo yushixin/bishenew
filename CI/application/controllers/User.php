@@ -100,4 +100,10 @@ class User extends CI_Controller {
 		}  
 		echo json_encode($response);
 	}
+	public function showMessage(){
+		$nowuserid=$this->input->post("nowuserid");
+		$this->load->model('User_model');
+		$result = $this->User_model->show_Message($nowuserid);
+		echo json_encode($result);
+	}
 }

@@ -5,11 +5,13 @@ import PersonalCenter           from '@/components/PersonalCenter'
 import ShoppingMall             from '@/components/ShoppingMall'
 import CommodityDetails         from '@/components/CommodityDetails'
 import ShoppingCart             from '@/components/ShoppingCart'
+import order                    from '@/components/order'
 import login                    from '@/components/login'
 import index                    from '@/components/Index'
+import Message                  from '@/components/Message'
 import indexall                 from '@/components/index/indexall'
 import indextop                 from '@/components/index/indextop'
-import indexadmin                 from '@/components/index/indexadmin'
+import indexadmin               from '@/components/index/indexadmin'
 
 import search                   from '@/components/search'
 import WillDie                  from '@/components/WaitPage/WillDie'
@@ -136,28 +138,28 @@ export default new Router({
       path : '/adminindex',
       name : 'adminindex',
       component: adminindex
-    },    
+    },
     {
       path : '/adminlogin',
       name : 'adminlogin',
       component: adminlogin
-    },    
+    },
     {
       path : '/AdminArticlePage',
       name : 'AdminArticlePage',
       component: AdminArticlePage
-    },    
+    },
     {
       path : '/AdminCommodityPage',
       name : 'AdminCommodityPage',
       component: AdminCommodityPage
-    },    
+    },
     {
       path : '/AdminUserPage',
       name : 'AdminUserPage',
       component: AdminUserPage
     }
-    ,    
+    ,
     {
       path : '/AdminCommodityUpdata',
       name : 'AdminCommodityUpdata',
@@ -182,6 +184,16 @@ export default new Router({
       path: '/ShoppingCart',
       name: 'ShoppingCart',
       component: ShoppingCart
+    },
+    {
+      path: '/order',
+      name: 'order',
+      component: order
+    },
+    {
+      path: '/Message',
+      name: 'Message',
+      component: Message
     }
   ]
 })

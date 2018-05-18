@@ -26,7 +26,7 @@
 						<div class="flexjz unifier-style2 unifier-style4">商品缺货</div>
 					</div>
 					<div class="flexjz adminindex-content-data-article">
-						<div class="flexjz unifier-style2 unifier-style3">1</div>
+						<div class="flexjz unifier-style2 unifier-style3">{{noReview}}</div>
 						<div class="flexjz unifier-style2 unifier-style4">未处理订单</div>
 					</div>
 				</div>
@@ -46,7 +46,8 @@
 				return {
 					user:"",
 					article:"",
-					commoditymaimeile: ""
+					commoditymaimeile: "",
+					noReview:""
 				}
 			},
 			components:{
@@ -89,6 +90,11 @@
 					.then((res)=>{
 						var commoditydata = JSON.parse(res.data);
 						this.commoditymaimeile = commoditydata.length;
+					});
+					Axios.get('http://localhost:3000/shownoReview')
+					.then((res)=>{
+						var orderdata = JSON.parse(res.data);
+						this.noReview =orderdata.length;
 					});
 		      	}
  			},

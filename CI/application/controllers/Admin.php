@@ -34,6 +34,16 @@ class Admin extends CI_Controller {
 		$result = $this->Admin_model->show_AllCommodity();
 		echo json_encode($result);
 	}
+	public function showAllOrder(){
+		$this->load->model('Admin_model');
+		$result = $this->Admin_model->show_AllOrder();
+		echo json_encode($result);
+	}
+	public function shownoReview(){
+		$this->load->model('Admin_model');
+		$result = $this->Admin_model->show_noReview();
+		echo json_encode($result);
+	}
 	public function showquehuo(){
 		$this->load->model('Admin_model');
 		$result = $this->Admin_model->show_quehuo();

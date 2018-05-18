@@ -2,7 +2,7 @@
 	<div class="header">
     <div class="header_left"><div class="article-page-center header_left-div" @click="aa"><span class="glyphicon glyphicon-menu-left"></span></div></div>
     <div class="header_middle"><h2>{{$store.state.title}}</h2></div>
-    <div class="header_right"></div>
+    <div class="header_right" @click="toMessage"><div><span class="glyphicon glyphicon-leaf"></span></div></div>
 		<!-- @click="aa" -->
 	</div>
 </template>
@@ -18,22 +18,13 @@ export default {
   methods : {
       aa:function(){
           history.go(-1);
-      }
+      },
+    toMessage:function () {
+      this.$router.push({path:"/Message"});
+
+    }
   },
   mounted(){
-        // var a = this.$route.path;
-        // console.log(a);
-        // var b = "/index";
-        // if(a == b){
-        //     console.log("当前在首页");
-        //     $(".header_left-div").click(function(){
-        //     });
-        // }else{
-        //   console.log("当前不在首页");
-        //   $(".header_left-div").click(function(){
-        //      history.go(-1);
-        //   });
-        // }
 
   }
 }
@@ -43,7 +34,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 
-  @import "../../assets/css/reset.css";	
+  @import "../../assets/css/reset.css";
 
   .headddder{
 
@@ -90,7 +81,18 @@ export default {
     flex: 2
   }
   .header_right{
-    flex: 1
+    flex: 1;
+    display:flex;
+    align-items: center;
+    flex-direction: row-reverse;
+  }
+  .header_right div{
+    height: 50px;
+    width: 50px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.4rem;
   }
 
 </style>

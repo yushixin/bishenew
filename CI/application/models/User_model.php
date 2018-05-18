@@ -58,4 +58,9 @@ class User_model extends CI_Model {
       $sql = "UPDATE user SET u_img = ? where u_id = ?";
       $this->db->query($sql, array($filename, $uid));
     }
+	public function show_Message($nowuserid){
+		$sql = "SELECT * FROM newmessage where message_aim = $nowuserid";
+		$query=$this->db->query($sql);
+		return $query->result();
+	}
 }
