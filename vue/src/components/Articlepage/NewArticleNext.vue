@@ -1,7 +1,7 @@
 <template>
   <div class="NewArticleNext">
 		<div>标题：</div>
-		<div><input class="biaoti" type="text" placeholder="请输入标题" v-model="articletitle"></div>
+		<div><input class="biaoti" type="text" placeholder="请输入标题" v-model="articletitle" onkeyup="this.value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')"></div>
 		<div>正文：</div>
 		<div id="textarea-div"><textarea name="" id="" placeholder="请输入正文" v-model="articletext"></textarea></div>
 		<div id="send-out" @click="sendOut">发送</div>
@@ -44,7 +44,7 @@ export default {
   		});
 
   	}
-      
+
   },
   mounted(){
       var value = sessionStorage.getItem("u_id");

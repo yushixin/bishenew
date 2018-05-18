@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac0e9e14-b827-4185-aead-048b885a283c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CI/application/controllers/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/CI/application/controllers/Admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CI/application/models/Admin_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/CI/application/models/Admin_model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middle/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/middle/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/components/Admin/AdminCommodityPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/components/Admin/AdminCommodityPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/components/Admin/AdminCommodityUpdata.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/components/Admin/AdminCommodityUpdata.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/components/Cat/ImprovingPetInformation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/components/Cat/ImprovingPetInformation.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/components/Message.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/components/Message.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/components/WaitPage/WillDie.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/components/WaitPage/WillDie.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/components/WaitPage/willvue.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/components/WaitPage/willvue.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/components/WaitPage/willvue2.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/components/WaitPage/willvue2.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/components/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/components/login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/components/order.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/components/order.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/components/reg.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/components/reg.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/src/components/Articlepage/NewArticleNext.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/src/components/Articlepage/NewArticleNext.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,15 +16,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AdminReviewOrder.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AdminReviewOrder.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vue/src/components/Admin/AdminReviewOrder.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+            <state relative-caret-position="475">
+              <caret line="56" selection-start-line="56" selection-end-line="56" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="e#421#447#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NewArticleNext.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/vue/src/components/Articlepage/NewArticleNext.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
@@ -46,7 +40,7 @@
       <file leaf-file-name="AdminUserPage.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vue/src/components/Admin/AdminUserPage.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
+            <state relative-caret-position="1862">
               <caret line="99" selection-start-line="99" selection-end-line="100" />
             </state>
           </provider>
@@ -55,8 +49,8 @@
       <file leaf-file-name="order.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vue/src/components/order.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="61" column="36" lean-forward="true" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
+            <state relative-caret-position="1140">
+              <caret line="61" column="36" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -68,7 +62,7 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/middle/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
+            <state relative-caret-position="9842">
               <caret line="518" column="93" selection-start-line="518" selection-start-column="86" selection-end-line="518" selection-end-column="93" />
             </state>
           </provider>
@@ -77,7 +71,7 @@
       <file leaf-file-name="Admin.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CI/application/controllers/Admin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
+            <state relative-caret-position="2223">
               <caret line="117" column="57" selection-start-line="117" selection-start-column="38" selection-end-line="117" selection-end-column="57" />
             </state>
           </provider>
@@ -86,8 +80,8 @@
       <file leaf-file-name="Admin_model.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CI/application/models/Admin_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="98" column="40" lean-forward="true" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="40" />
+            <state relative-caret-position="1862">
+              <caret line="98" column="40" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -130,6 +124,7 @@
         <option value="$PROJECT_DIR$/CI/application/controllers/Admin.php" />
         <option value="$PROJECT_DIR$/CI/application/models/Admin_model.php" />
         <option value="$PROJECT_DIR$/vue/src/components/Admin/AdminReviewOrder.vue" />
+        <option value="$PROJECT_DIR$/vue/src/components/Articlepage/NewArticleNext.vue" />
       </list>
     </option>
   </component>
@@ -161,7 +156,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -282,6 +276,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -320,21 +315,20 @@
       <workItem from="1525066525053" duration="610000" />
       <workItem from="1525919353312" duration="28000" />
       <workItem from="1526628689143" duration="12928000" />
+      <workItem from="1526655456115" duration="312000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15218000" />
+    <option name="totallyTimeSpent" value="15530000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.203125" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32876712" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -349,6 +343,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="调试" order="7" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32876712" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -363,6 +358,55 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/vue/src/components/Admin/AdminReviewOrder.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1064">
+          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue/src/components/Admin/AdminUserPage.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1881">
+          <caret line="99" selection-start-line="99" selection-end-line="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue/src/components/order.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1159">
+          <caret line="61" column="36" lean-forward="true" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/middle/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9842">
+          <caret line="518" column="93" selection-start-line="518" selection-start-column="86" selection-end-line="518" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CI/application/controllers/Admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2223">
+          <caret line="117" column="57" selection-start-line="117" selection-start-column="38" selection-end-line="117" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CI/application/models/Admin_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1862">
+          <caret line="98" column="40" lean-forward="true" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/vue/src/components/Index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="893">
@@ -510,10 +554,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="9" column="10" lean-forward="true" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -613,8 +653,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vue/src/components/order.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="61" column="36" lean-forward="true" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
+        <state relative-caret-position="1140">
+          <caret line="61" column="36" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -624,40 +664,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CI/application/controllers/Admin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
+        <state relative-caret-position="2223">
           <caret line="117" column="57" selection-start-line="117" selection-start-column="38" selection-end-line="117" selection-end-column="57" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/middle/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
+        <state relative-caret-position="9842">
           <caret line="518" column="93" selection-start-line="518" selection-start-column="86" selection-end-line="518" selection-end-column="93" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CI/application/models/Admin_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="98" column="40" lean-forward="true" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="40" />
+        <state relative-caret-position="1862">
+          <caret line="98" column="40" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vue/src/components/Admin/AdminUserPage.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
+        <state relative-caret-position="1862">
           <caret line="99" selection-start-line="99" selection-end-line="100" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vue/src/components/Admin/AdminReviewOrder.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+        <state relative-caret-position="475">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#421#447#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue/src/components/Articlepage/NewArticleNext.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
