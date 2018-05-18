@@ -32,6 +32,7 @@ import AdminUserPage            from '@/components/Admin/AdminUserPage'
 import AdminCommodityPage       from '@/components/Admin/AdminCommodityPage'
 import AdminCommodityUpdata     from '@/components/Admin/AdminCommodityUpdata'
 import AdminMessage             from '@/components/Admin/AdminMessage'
+import AdminReviewOrder         from '@/components/Admin/AdminReviewOrder'
 
 
 
@@ -164,6 +165,12 @@ export default new Router({
       path : '/AdminCommodityUpdata',
       name : 'AdminCommodityUpdata',
       component: AdminCommodityUpdata
+    },
+
+    {
+      path : '/AdminReviewOrder',
+      name : 'AdminReviewOrder',
+      component: AdminReviewOrder
     },
     {
       path: '/AdminMessage/:id',

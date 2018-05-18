@@ -39,6 +39,13 @@ class Admin extends CI_Controller {
 		$result = $this->Admin_model->show_AllOrder();
 		echo json_encode($result);
 	}
+	public function showOrder(){
+		$nowUserid = $this->input->post("nowUserid");
+
+		$this->load->model('Admin_model');
+		$result = $this->Admin_model->show_Order($nowUserid);
+		echo json_encode($result);
+	}
 	public function shownoReview(){
 		$this->load->model('Admin_model');
 		$result = $this->Admin_model->show_noReview();
@@ -105,4 +112,11 @@ class Admin extends CI_Controller {
 		$result = $this->Admin_model->insert_Message($message,$aim,$nowtime);
 		echo json_encode($result);
 	}
+	public function okokorder(){
+		$orderid = $this->input->post("orderid");
+		$this->load->model('Admin_model');
+		$result = $this->Admin_model->okokorder($orderid);
+		echo json_encode($result);
+	}
+
 }

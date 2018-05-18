@@ -57,7 +57,11 @@ export default {
         }
       },
       getData:function(){
-        Axios.get('http://localhost:3000/showAllOrder').
+        Axios.get('http://localhost:3000/showOrder',{
+          params:{
+            nowUserid:this.nowUserid
+          }
+        }).
         then((res)=>{
             this.data = JSON.parse(res.data);
             console.log(this.data);

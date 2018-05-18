@@ -1,6 +1,6 @@
-<!-- 
+<!--
     WillDie.vue 20180321
-    这个页面出现在 当前页面 sessionstorage不存在的时候 
+    这个页面出现在 当前页面 sessionstorage不存在的时候
                                   -->
 <template>
   <div class="willdie">
@@ -22,7 +22,7 @@ export default {
   methods:{
     newbaby:function(){
       var _this = this;
-      
+
       var life = setTimeout(function(){
         _this.$router.push({path:"/login"});
       },1000);
@@ -41,9 +41,10 @@ export default {
   @import "../../assets/css/reset.css";
 #PersonalContent{
   width: 375px;
-  height: 667px; 
+  height: 667px;
   background: #b8f1ed;
   /*margin: 0 auto;*/
+  font-size: 1rem;
 }
 #PersonalContent span{
     display:block;

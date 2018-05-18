@@ -12,9 +12,10 @@
     <div id="contentDiv">
       <img id="regimg" src="../assets/img/tupian1.png">
       <div id="inputDiv">
-        <div><el-input type="text" v-model="username" placeholder="请输入账号"></el-input></div>
-        <div><el-input type="password" v-model="password" placeholder="请输入密码"></el-input>
-</div>
+        <!--<div><el-input type="text" v-model="username" placeholder="请输入账号" ></el-input></div>-->
+        <div><input type="text" v-model="username" placeholder="请输入账号(限英文" maxlength="10" onkeyup="this.value=this.value.replace(/[^a-zA-Z]/g,'')"></div>
+
+        <div><input type="password" v-model="password" placeholder="请输入密码(英文和数字"   maxlength="10" onkeyup="value=value.replace(/[^\w\.\/]/ig,'')"></div>
           <el-button type="primary" style="width:100%" @click="reg">注册</el-button>
           <el-button type="text" @click="tologin">已有账号立即登陆</el-button>
       </div>
@@ -165,5 +166,18 @@ export default {
   .displaynone{
     display: none;
   }
+   #inputDiv{
+     height: 3rem;
+     font-size: 0.4rem;
+   }
+  #inputDiv div{
+    height: 1rem;
+  }
+  #inputDiv div input{
+    width: 100%;
+    height: 100%;
+    padding-left: 1rem;
+  }
+
 
 </style>

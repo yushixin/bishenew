@@ -1,7 +1,7 @@
-<!-- 
+<!--
     willvue2.vue 20180425
     这是在PersonalCenter.vue页面中
-    点击宠物删除按钮后短暂停留的界面 
+    点击宠物删除按钮后短暂停留的界面
                                   -->
 <template>
   <div class="willdie">
@@ -35,8 +35,10 @@ export default {
   @import "../../assets/css/reset.css";
 #PersonalContent{
   width: 375px;
-  height: 667px; 
+  height: 667px;
   background: #b8f1ed;
+  font-size: 0.5rem;
+
 }
 
 </style>

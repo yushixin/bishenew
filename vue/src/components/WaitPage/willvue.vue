@@ -1,7 +1,7 @@
-<!-- 
+<!--
     willvue.vue 20180321
     这是在PersonalCenter.vue页面中
-    点击注销后短暂停留的界面 
+    点击注销后短暂停留的界面
                                   -->
 <template>
   <div class="willdie">
@@ -23,7 +23,7 @@ export default {
   methods:{
     newbaby:function(){
       var _this = this;
-      
+
       var life = setTimeout(function(){
         _this.$router.push({path:"/login"});
       },1000);
@@ -42,8 +42,9 @@ export default {
   @import "../../assets/css/reset.css";
 #PersonalContent{
   width: 375px;
-  height: 667px; 
+  height: 667px;
   background: #b8f1ed;
+  font-size: 0.5rem;
   /*margin: 0 auto;*/
 }
 #PersonalContent span{

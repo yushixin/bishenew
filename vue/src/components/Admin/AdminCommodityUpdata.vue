@@ -79,7 +79,7 @@
 					});
 					var life = setTimeout(function(){
 						_this.$router.push({path:"/AdminCommodityPage"});
-					},2000);
+					},1000);
  				}
  			},
 			mounted(){
@@ -103,8 +103,8 @@
 		flex:0.5;
 	}
 	.admin-commodity-page{
-		width: 1024px;	
-		height: 1366px;	
+		width: 1024px;
+		height: 1366px;
 		background: #222;
 		flex-direction: column;
 	}
@@ -135,7 +135,7 @@
 		width: 100%;
 		height: 100%;
 		color: #000;
-		padding-left:20px; 
+		padding-left:20px;
 	}
 	.cc-submit{
 		flex-direction: row;
@@ -151,5 +151,5 @@
 		background: #66FF99;
 	}
 
-	
+
 </style>

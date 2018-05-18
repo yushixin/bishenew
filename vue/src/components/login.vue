@@ -9,16 +9,14 @@
 	</transition>
 
   	<div id="imgDiv">
-	  	<img id="loginImg" src="../assets/img/tupian1.png">	
+	  	<img id="loginImg" src="../assets/img/tupian1.png">
   	</div>
 
   	<div id="inputDiv">
-		<div><el-input type="text" v-model="username" placeholder="请输入账号"></el-input></div>
-        <div><el-input type="password" v-model="password" placeholder="请输入密码"></el-input>
-</div>
-		<el-button class="regbutton" type="primary" style="width:100%" @click="login">登录</el-button>
+		    <div><input type="text" v-model="username" placeholder="请输入账号(限英文" maxlength="10" onkeyup="this.value=this.value.replace(/[^a-zA-Z]/g,'')"></div>
+        <div><input type="password" v-model="password" placeholder="请输入密码(英文和数字" maxlength="10" onkeyup="value=value.replace(/[^\w\.\/]/ig,'')"></div>
+        <el-button class="regbutton" type="primary" style="width:100%" @click="login">登录</el-button>
         <el-button type="text" @click="toreg"  >立即注册</el-button>
-
   	</div>
   </div>
 </template>
@@ -135,19 +133,28 @@
 	#inputDiv{
 		position: absolute;
 		top: 375px;
-
-		width: 375px;
-		height: 200px;
-		margin: 0 auto;
-	}
-	.input{
 		width: 100%;
-		height: 1rem;
-		/*margin-top: 35px;*/
-		font-size: 0.5rem;
-		line-height:1rem;
-		/*border:10px solid block;*/
+		height: 3rem;
+		margin: 0 auto;
+    font-size: 0.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
 	}
+  #inputDiv div{
+    width: 100%;
+    height: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #inputDiv div input{
+    width: 100%;
+    height: 100%;
+    padding-left: 1rem;
+  }
 	.displaynone{
 		display: none;
 	}

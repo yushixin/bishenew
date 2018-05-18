@@ -5,13 +5,13 @@
 			<div class="cat-name">
 				<div>名字</div>
 				<div>
-					<input type="text" class="form-control" id="form-control1" placeholder="请输入patname" aria-describedby="basic-addon1">
+					<input type="text" class="form-control" id="form-control1" placeholder="请输入patname" aria-describedby="basic-addon1" >
 				</div>
 			</div>
 			<div class="cat-age">
 				<div>年龄</div>
 				<div>
-					<input type="text" class="form-control" id="form-control2"placeholder="请输入age" aria-describedby="basic-addon1">
+					<input type="text" class="form-control" id="form-control2"placeholder="请输入age" aria-describedby="basic-addon1" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
 				</div>
 			</div>
 			<div class="cat-varieties">

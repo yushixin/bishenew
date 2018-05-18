@@ -8,7 +8,7 @@
 				<div class="flexjz content-up_one-ohno" @click="toCommodityUpdata">上架商品</div>
 			</div>
 			<div class="flexjz Unified-style content-up_two">
-				<div class="flexjz content-up_one-ohno">审核订单</div>
+				<div class="flexjz content-up_one-ohno" @click="tuReviewOrder">审核订单</div>
 			</div>
 			<div class="flexjz Unified-style content-up_three">
 				<div class="flexjz content-up_one-ohno" @click="seestock" v-if="flag==1">查看库存</div>
@@ -56,7 +56,7 @@
 					<div class="flexjz content-down-content-box-next-style content-down-content-box-next-stock" v-if="flag==2">{{commoditydatas.commodity_stock}}</div>
 				</div>
 				<div style="height:6rem"></div>
-				
+
 			</div>
 		</div>
 	</div>
@@ -71,12 +71,12 @@
 			<div class="flexjz flex1 updata-input" v-if="updataflag2==3">
 				<div class="flexjz flex05 updata-input-div">价格</div>
 				<div class="flexjz flex1 updata-input-inputdiv"><input type="text" name="updataprice" placeholder="请输入信息" v-model="nowprice"></div>
-				
+
 			</div>
 			<div class="flexjz flex1 updata-input" v-if="updataflag2==3">
 				<div class="flexjz flex05 updata-input-div">库存</div>
 				<div class="flexjz flex1 updata-input-inputdiv"><input type="text" name="updatastock" placeholder="请输入信息" v-model="nowstock"></div>
-				
+
 			</div>
 			<div class="flexjz flex1 updata-submit" v-if="updataflag2==3"><div class="flexjz" @click="updataSubmit">提交</div></div>
 			<div class="flexjz flex3 updata-ojbk" v-if="updataflag2==4">OJBK</div>
@@ -192,7 +192,11 @@
 						// 	location.reload();
 						// },1000);
 					});
- 				}
+ 				},
+        tuReviewOrder:function () {
+          this.$router.push({path:"/AdminReviewOrder"});
+
+        }
  			},
 			mounted(){
 				this.$store.dispatch('changeTitle',['商品管理','ddd','#66FF99']);
@@ -222,7 +226,7 @@
 		flex: 3;
 	}
 	.admin-commodity-page{
-		width: 1024px;	
+		width: 1024px;
 		/*height: 1366px;*/
 		background: #222;
 		flex-direction: column;
@@ -365,7 +369,7 @@
 		color: #fff;
 		font-size: 0.25rem;
 	}
-	
+
 	.commodityname p{
 	    text-overflow:ellipsis;
 	    overflow:hidden;

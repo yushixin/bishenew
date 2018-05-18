@@ -27,6 +27,11 @@ class Admin_model extends CI_Model {
 		$query=$this->db->query($sql);
 		return $query->result();
 	}
+	public function show_Order($nowUserid){
+		$sql = "SELECT * FROM `order` where order_uid = $nowUserid";
+		$query=$this->db->query($sql);
+		return $query->result();
+	}
 	public function show_noReview(){
 		$sql = "SELECT * FROM `order` where order_flag = 0 ";
 		$query=$this->db->query($sql);
@@ -91,10 +96,10 @@ class Admin_model extends CI_Model {
 	  	$query=$this->db->query($sql);
 	 	return $query;
 	}
-	// public function insert_Message($message,$aim,$nowtime){		
-	// 	$sql = "INSERT INTO newmessage (message_id, message_message,message_aim,message_time) VALUES (null,$message,$aim,$nowtime)";
-	// 	$query = $this->db->query($sql);
-	// 	return $query;
-	// }
+	public function okokorder($orderid){
+	    $sql = "UPDATE `order` SET order_flag = '1' where order_id = ?";
+		$query = $this->db->query($sql,array($orderid));
+		return $query;
+	}
 
 }

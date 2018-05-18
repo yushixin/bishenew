@@ -330,6 +330,7 @@ router.get('/submitorderOKdelete',function(req,res,next){
         }
     });
 })
+
 // 管理员部分
 // 
 router.get('/adminlogin',function(req,res,next){
@@ -380,6 +381,17 @@ router.get('/showAllOrder',function(req,res,next){
     request.get('http://127.0.0.1/bishegogogo/CI/admin/showAllOrder',function(error, response, body){
         if (!error && response.statusCode == 200) {
             console.log("########## showAllOrder 返回值 ##########");
+            res.json(body);
+        }
+    });
+})
+router.get('/showOrder',function(req,res,next){
+    console.log("########## showOrder Run ##########");
+    var nowUserid = req.query.nowUserid;
+
+    request.post({url:'http://127.0.0.1/bishegogogo/CI/admin/showOrder',form:{nowUserid:nowUserid}},function(error,response,body){
+        if (!error && response.statusCode == 200) {
+            console.log("*****showOrder 返回值");
             res.json(body);
         }
     });
@@ -500,7 +512,17 @@ router.get('/insertMessage',function(req,res,next){
         }
     });
 })
-
+router.get('/okokorder',function(req,res,next){
+    console.log("########## okokorder Run ##########");
+    var orderid = req.query.orderid;
+    console.log("orderid:"+orderid);
+    request.post({url:'http://127.0.0.1/bishegogogo/CI/admin/okokorder',form:{orderid:orderid}},function(error,response,body){
+        if (!error && response.statusCode == 200) {
+            res.json(body);
+            console.log(body);
+        }
+    });
+})
 
 
 module.exports = router;

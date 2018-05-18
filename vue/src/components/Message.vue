@@ -5,7 +5,7 @@
     <div class="flexJZ message-content-box" v-for="datas in data">
       <div class="flexJZ message-content-box-row">
         <div class=" flex1 row-next row-next-name">{{datas.message_time}}</div>
-        <div class=" flex1 row-next row-next-content">{{datas.message_message}}</div>
+        <div class=" flex1 row-next row-next-content"><p>{{datas.message_message}}</p></div>
       </div>
     </div>
     <div style="height:1rem;"></div><!-- 空div 用来占位 -->
